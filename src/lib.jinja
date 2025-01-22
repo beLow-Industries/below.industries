@@ -1,0 +1,9 @@
+{% macro product_item(image, name, price) %}
+<div class="product-item">
+    <a href="{{ _o_["slugify"](name) }}.html">
+    <img src="media/{{ image }}" alt="{{ name }}">
+    </a>
+    <div class="product-name">{{ name }}</div>
+    <div class="product-price">{{ price }}€</div>
+</div>
+{% endmacro %}

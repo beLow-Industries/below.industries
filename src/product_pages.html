@@ -1,0 +1,20 @@
+/o/ for product in _o_["load_yaml"]("products.yaml") \o\
+\o/ _o_["start_page"](product["name"]) \o/
+\o/ src["header.html"] \o/
+<section class="product-page">
+  <div class="product-info">
+    <h2>\o/ product["name"] \o/</h2>
+    <section class="product-description">
+      \o/ product["description"] \o/
+    </section>
+    <section class="product-price">
+      \o/ product["price"] \o/€
+    </section>
+  </div>
+  <section class="product-image">
+    <img src="media/\o/ product["image"] \o/" alt="\o/ product["name"] \o/">
+  </section>
+</section>
+\o/ src["footer.html"] \o/
+\o/ _o_["end_page"]() \o/
+/o/ endfor \o\

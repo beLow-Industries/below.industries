@@ -1,0 +1,28 @@
+- name: Romejko (assembled)
+  id: romejko
+  image: romejko.jpg
+  price: 160
+  description: |
+    The Romejko is a chaotic glyph-based image generator. <br> Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br> Instead, its fundamentals building blocks are <strong>glyphs</strong>, <strong class="colors">colors</strong>, and <strong>controlled c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹</strong></p>
+  buy_link: https://leshauts.xyz/
+- name: Romejko (DIY kit)
+  id: romejko-diy
+  image: romjkopcb.jpg
+  price: 90
+- name: Lav
+  description: |
+    Raton laveur de signal analogique
+  image: FP lav.png
+  price: 60
+- name: Etouff
+  image: FP etouff.png
+  price: 90
+- name: TV wall 4x adapter
+  image: tvwall.jpg
+  price: 50
+- name: Eclipse
+  image: FP eclipse.png
+  price: 120
+- name: YCVB
+  image: FP ycvb.png
+  price: 190

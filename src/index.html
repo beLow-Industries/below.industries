@@ -1,0 +1,7 @@
+\o/ src["header.html"] \o/
+<section class="product-grid">
+    /o/ for product in _o_["load_yaml"]("products.yaml") \o\
+    \o/ product_item(product["image"], product["name"], product["price"]) \o/
+    /o/ endfor \o\
+</section>
+\o/ src["footer.html"] \o/
