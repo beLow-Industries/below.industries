@@ -26,3 +26,6 @@
 - name: YCVB
   image: FP ycvb.png
   price: 190
+- name: TEST DE LA REU
+  image:  ycvb.png
+  price: surdemande€
