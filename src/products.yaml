@@ -4,7 +4,14 @@
   price: 160
   description: |
     The Romejko is a chaotic glyph-based image generator. <br> Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br> Instead, its fundamentals building blocks are <strong>glyphs</strong>, <strong class="colors">colors</strong>, and <strong>controlled c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹</strong></p>
-  buy_link: https://leshauts.xyz/
+  links:
+  - name: Buy
+    url: https://leshauts.xyz/
+  - name: GitHub
+    url: https://leshauts.xyz/
+  tags:
+    - video
+    - synth
 - name: Romejko (DIY kit)
   id: romejko-diy
   image: romjkopcb.jpg

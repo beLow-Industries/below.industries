@@ -10,6 +10,18 @@
     <section class="product-price">
       \o/ product["price"] \o/€
     </section>
+    <section class="product-links">
+      <ul>
+        <li class="links-label">
+          Links:
+        </li>
+        /o/ for link in product["links"] \o\
+        <a target="_blank" href="\o/ link['url'] \o/">
+          <li class="link-block">\o/ link['name'] \o/</li>
+        </a>
+        /o/ endfor \o\
+      </ul>
+    </section>
   </div>
   <section class="product-image">
     <img src="media/\o/ product["image"] \o/" alt="\o/ product["name"] \o/">
