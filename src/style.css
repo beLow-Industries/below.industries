@@ -11,6 +11,7 @@ html {
     overflow-x: hidden;
     background-color: #000;
     color: #eee;
+    cursor: url(http://below.industries/media/oth32.ani), auto;
 }
 
 div, section {
