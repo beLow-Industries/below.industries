@@ -111,7 +111,7 @@ header a {
     padding: 20px;
     margin: 2vh auto;
     max-width: 1200px;
-    transition: 3s ease-in 1s;
+    transition: 0.3s ease-in 0s;
 }
 
 .product-info {
@@ -152,6 +152,7 @@ header a {
 
 .product-image img {
     max-width: 100%;
+    width:100%;
     height: auto;
     border-radius: 8px;
     max-width: 100%;
@@ -192,3 +193,23 @@ header a {
     background-color: #fff;
     color: #000;
 }
+
+/* and (max-width:800px){ */
+@media screen and (max-width:1780px) {
+    .product-grid, .product-page {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width:1000px) and (min-width: 500px) {
+    .product-info, .product-image {
+        flex: 1 1 42%;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .product-info, .product-image {
+        flex: 1 1 50%;
+    }
+}
+
