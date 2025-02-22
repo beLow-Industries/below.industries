@@ -13,6 +13,10 @@ html {
     color: #eee;
 }
 
+div, section {
+    background-color: #000;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -30,6 +34,7 @@ header {
     font-size: 24px;
     font-weight: bold;
     color: black;
+    background-color: #fff;
 }
 
 header a {
