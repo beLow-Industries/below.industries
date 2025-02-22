@@ -152,10 +152,9 @@ header a {
 
 .product-image img {
     max-width: 100%;
-    width:100%;
+    width: calc(100% - 32px);
     height: auto;
     border-radius: 8px;
-    max-width: 100%;
     height: auto;
     border-radius: 32px;
     border: 4px solid #fff;
