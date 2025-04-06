@@ -10,26 +10,48 @@
   - name: GitHub
     url: https://leshauts.xyz/
   tags:
-    - video
-    - synth
+  - video
+  - synth
 - name: Romejko (DIY kit)
   id: romejko-diy
   image: romjkopcb.jpg
   price: 90
+  tags:
+  - video
+  - synth
+  - diy
 - name: Lav
   description: |
     Raton laveur de signal analogique
   image: FP lav.png
   price: 60
+  tags:
+  - audio
+  - fx
+  - modular
 - name: Etouff
   image: FP etouff.png
   price: 90
+  tags:
+  - audio
+  - fx
+  - modular
 - name: TV wall 4x adapter
   image: tvwall.jpg
   price: 50
+  tags:
+  - video
 - name: Eclipse
   image: FP eclipse.png
   price: 120
+  tags:
+  - video
+  - fx
+  - modular
 - name: YCVB
   image: FP ycvb.png
   price: 190
+  tags:
+  - video
+  - fx
+  - modular

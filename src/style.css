@@ -11,8 +11,12 @@ html {
     overflow-x: hidden;
     background-color: #000;
     color: #eee;
-    cursor: url(media/tealpoint.gif), auto;
+    cursor: url(media/tealpoint.gif) 7 1, auto !important;
     min-height: 100vh;
+}
+
+header, a:hover {
+    cursor: url(media/tealcross.gif) 16 16, auto;
 }
 
 div, section {
@@ -27,7 +31,6 @@ header {
     height: 80px;
     background-color: #fff;
     width: 270px;
-    cursor: pointer;
 }
 
 .title {
@@ -37,6 +40,12 @@ header {
     font-weight: bold;
     color: black;
     background-color: #fff;
+}
+
+.top-sub-title {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 header a {
