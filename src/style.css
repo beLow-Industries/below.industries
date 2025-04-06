@@ -43,9 +43,10 @@ header {
 }
 
 .top-sub-title {
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px;
+    position: fixed;
+    top: 80px;
+    padding: 15px;
+    margin: 0px;
 }
 
 header a {
@@ -214,6 +215,10 @@ header a {
     .product-grid, .product-page {
         margin-top: 80px;
     }
+    .product-grid.with-sub-title {
+        margin-top: 120px;
+    }
+
 }
 
 @media screen and (max-width:1000px) and (min-width: 500px) {
