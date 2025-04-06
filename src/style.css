@@ -225,11 +225,17 @@ header a {
     .product-info, .product-image {
         flex: 1 1 42%;
     }
+    header {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width:660px) {
     .product-info, .product-image {
         flex: 1 1 50%;
+    }
+    header {
+        width: 100%;
     }
 }
 
