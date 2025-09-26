@@ -139,9 +139,10 @@ header a { text-decoration: none; }
 
 /* ---------- Sub-title ---------- */
 .top-sub-title {
-  position: fixed;
+  position: fixed
   top: 107px;
   left: 16px;
+  display: inline-block;
   margin: 0;
   padding: 2px 10px;
   border-radius: 10px;
@@ -185,6 +186,13 @@ header a { text-decoration: none; }
   }
 
   #menu.open { width: 0; }
+
+  .top-sub-title {
+  position: relative
+  top: 0;
+  left: 0;
+  }
+
 }
 #menu a {
   position: relative;
