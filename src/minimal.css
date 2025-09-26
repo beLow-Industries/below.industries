@@ -70,7 +70,7 @@ img {
 html, body{
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: 'Monofonto', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
