@@ -479,6 +479,10 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
   .product-grid { margin-top: 108px; }
   .product-page { margin-top: 108px; }
 
+  .product-grid .product-item {
+      padding: 6px;
+  }
+
   .product-price {
       padding: 0px 11px;
       border-radius: 6px;
