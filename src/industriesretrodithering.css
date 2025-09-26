@@ -17,9 +17,9 @@
   --accent-2: #0d6f63;
   --accent-3: #7ae4d7;
 
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
+  --radius-lg: 9px;
+  --radius-md: 6px;
+  --radius-sm: 3px;
 
   --shadow-1: 0 10px 30px rgba(0,0,0,0.45);
   --shadow-2: 0 20px 50px rgba(0,0,0,0.6);
@@ -179,6 +179,13 @@ header a { text-decoration: none; }
   transition: width var(--speed) ease;
 }
 #menu.open { width: 320px; }
+@media (min-width: 1800px) {
+  #menu {
+    width: 320px; /* same as #menu.open */
+  }
+
+  #menu.open { width: 0; }
+}
 #menu a {
   position: relative;
   display: block;
