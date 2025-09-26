@@ -139,7 +139,7 @@ header a { text-decoration: none; }
 
 /* ---------- Sub-title ---------- */
 .top-sub-title {
-  position: fixed
+    position: fixed;
   top: 107px;
   left: 16px;
   display: inline-block;
