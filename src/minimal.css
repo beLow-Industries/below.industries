@@ -407,7 +407,7 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
   #menu.open{ width: 50vw; }
   .product-grid{
     margin-top: 96px;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    /*grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));*/
   }
   .product-page{ margin-top: 96px; }
 
