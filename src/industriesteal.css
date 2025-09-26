@@ -1,0 +1,519 @@
+/* ================================
+   beLow Industries – Modern Redesign
+   (CSS only – no markup changes)
+   ================================ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Backgrounds */
+  --bg: #0a0a0a;         /* fond quasi noir */
+  --bg-alt: #111;        /* noir adouci */
+  --panel: rgba(255,255,255,0.05);
+
+  /* Text */
+  --text: #f2f2f2;       /* blanc doux */
+  --muted: #a9b3aa;      /* gris verdâtre neutre */
+  --line: rgba(255,255,255,0.08);
+
+  /* Accents basés sur #1ee1c8 */
+  --accent:   #1ee1c8;   /* accent principal turquoise vif */
+  --accent-2: #0d6f63;   /* variante sombre tirant vers bleu-vert */
+  --accent-3: #7ae4d7;   /* variante claire, avec une touche violette douce */
+
+  /* Rayons */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  /* Ombres */
+  --shadow-1: 0 10px 30px rgba(0,0,0,0.45);
+  --shadow-2: 0 20px 50px rgba(0,0,0,0.6);
+
+  /* Vitesse des transitions */
+  --speed-fast: .18s;
+  --speed: .28s;
+  --speed-slow: .6s;
+
+  /* Largeur max */
+  --maxw: 1200px;
+}
+
+/* Respecte le mode réduit d’animations */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --speed-fast: 0s;
+    --speed: 0s;
+    --speed-slow: 0s;
+  }
+}
+
+/* ---------- Font & base ---------- */
+@font-face {
+  font-family: 'Neue Helvetica';
+  src: local('Helvetica Neue'), local('Helvetica');
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(102,227,255,0.08), transparent 60%),
+              radial-gradient(1200px 800px at 100% 10%, rgba(138,125,255,0.10), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  font-family: 'Neue Helvetica', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: url(media/tealpoint.gif) 7 1, auto !important;
+}
+
+a:hover,
+header:hover { cursor: url(media/tealcross.gif) 16 16, auto; }
+
+/* Neutralise héritage d’arrière-plan sur blocs */
+div, section { background: transparent; }
+
+/* ---------- Header (brand chip) ---------- */
+header {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 260px;
+  border-radius: 9px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform var(--speed-fast) ease, box-shadow var(--speed) ease;
+}
+
+header:active { transform: scale(0.98); }
+header:hover  { box-shadow: var(--shadow-2); }
+
+/* Import de la font (dans <head>) */
+@import url('https://fonts.cdnfonts.com/css/postus-scriptus');
+
+/* Redesign du titre */
+.title {
+  font-family: 'Postus Scriptus', sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: none;      /* laisse respirer la fonte */
+  color: var(--text);
+  padding: 4px 0;
+  position: relative;
+  border-radius: 6px;        /* plus carré */
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  opacity: 0.9;
+}
+
+
+
+/* ---------- Sub-title (if present) ---------- */
+.top-sub-title {
+  position: fixed;
+  top: 96px;
+  left: 16px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ---------- Slide-out Menu ---------- */
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 0;
+  overflow: hidden;
+  z-index: 1000;
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: stretch;
+  text-align: right;
+
+  /* glass panel */
+  background: rgba(10,12,16,0.7);
+  border-right: 1px solid var(--line);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+
+  transition: width var(--speed) ease;
+}
+
+#menu.open { width: 320px; }
+
+#menu a {
+  position: relative;
+  display: block;
+  padding: 14px 26px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: color var(--speed-fast) ease, transform var(--speed-fast) ease;
+}
+
+#menu a::after {
+  content: '';
+  position: absolute;
+  inset-inline: 26px;
+  bottom: 8px;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: transform var(--speed) ease;
+}
+
+#menu a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+#menu a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---------- Main layout helpers ---------- */
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 24px clamp(16px, 3vw, 32px);
+}
+
+/* ---------- Product Grid ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(16px, 2.4vw, 28px);
+  padding: 24px;
+  margin: 120px auto 0;
+}
+
+.product-grid.with-sub-title { margin-top: 160px; }
+
+.product-item {
+  display: grid;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+  transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+}
+
+.product-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  border-color: rgba(102,227,255,0.25);
+}
+
+.product-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius-lg) - 6px);
+  transition: filter var(--speed-fast) ease, transform var(--speed) ease;
+  will-change: transform;
+}
+
+.product-item:hover img { transform: scale(1.02); filter: saturate(1.15) contrast(1.02); }
+
+.product-name {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--text);
+  margin: 2px 4px 10px;
+}
+
+/* ---------- Product Page ---------- */
+.product-page {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: clamp(20px, 4vw, 40px);
+  align-items: stretch;
+  margin: 120px auto 40px;
+  padding: clamp(14px, 2vw, 20px);
+}
+
+.product-info {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 18px;
+  padding: clamp(20px, 3vw, 28px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015)) padding-box,
+    radial-gradient(120% 100% at 0% 0%, rgba(102,227,255,0.07), transparent 60%) border-box;
+  box-shadow: var(--shadow-1);
+}
+
+.product-info h2 {
+  margin: 0;
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.15;
+  letter-spacing: .3px;
+  background: linear-gradient(90deg, var(--text), #b9c4ce);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.product-description {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.7vw, 17px);
+}
+
+.product-description strong { color: var(--text); }
+.product-description .colors {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 0 transparent;
+}
+
+.product-price {
+  justify-self: start;
+  align-self: end;
+  font-weight: 900;
+  letter-spacing: .4px;
+  color: var(--bg);
+  background:
+    linear-gradient(90deg, var(--accent), var(--accent-2)) border-box;
+  border: 0;
+  padding: 5px 18px;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(102,227,255,0.25);
+}
+
+/* Image panel with subtle 3D tilt on hover */
+.product-image {
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2vw, 16px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+  box-shadow: var(--shadow-1);
+  perspective: 1200px;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 680px;
+  border-radius: calc(var(--radius-lg) - 6px);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0;
+  transition: transform var(--speed-slow) ease, box-shadow var(--speed) ease, filter var(--speed) ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  transform-style: preserve-3d;
+}
+
+.product-image:hover img {
+  transform: rotateX(1.2deg) rotateY(-2deg) translateY(-4px);
+  filter: saturate(1.08) contrast(1.03);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+}
+
+/* ---------- Link buttons ---------- */
+.product-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-links a { text-decoration: none; }
+
+.product-links ul li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  transition: transform var(--speed-fast) ease, box-shadow var(--speed) ease, border-color var(--speed) ease, background var(--speed) ease;
+}
+
+.product-links ul li.link-block:hover {
+  transform: translateY(-2px);
+  border-color: rgba(102,227,255,0.35);
+  box-shadow: 0 10px 24px rgba(102,227,255,0.18);
+  background:
+    linear-gradient(90deg, rgba(102,227,255,0.18), rgba(138,125,255,0.18));
+  color: #fff;
+}
+
+.product-links ul li.links-label {
+  font-weight: 700;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  background: transparent;
+}
+
+/* ---------- Accessibility: focus states ---------- */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+.title:focus-visible,
+.product-links ul li:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px var(--accent);
+  transition: box-shadow var(--speed-fast) ease;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .product-page {
+    grid-template-columns: 1fr;
+  }
+ .product-image { order: 2; }
+  .product-info  { order: 1; }
+}
+
+@media (max-width: 960px) {
+  header {
+    top: 12px; left: 12px;
+    width: 228px; height: 58px;
+  }
+  .top-sub-title { top: 86px; left: 12px; }
+  #menu.open { width: 50vw; }
+  .product-grid { margin-top: 108px; }
+  .product-page { margin-top: 108px; }
+}
+
+@media (max-width: 560px) {
+  main { padding: 16px 14px; }
+  .product-name { font-size: 15px; }
+  #menu { padding-top: 100px; }
+  #menu a { font-size: 17px; padding: 12px 22px; }
+}
+
+/* ---------- Nice extras ---------- */
+/* Subtle animated accent border on hoverable containers */
+.product-item,
+.product-info,
+.product-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-item::before,
+.product-info::before,
+.product-image::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    conic-gradient(from 180deg at 50% 50%, transparent 0deg, rgba(102,227,255,0.22) 120deg, rgba(138,125,255,0.22) 240deg, transparent 360deg);
+  opacity: 0;
+  transition: opacity var(--speed) ease, filter var(--speed) ease;
+  filter: blur(18px);
+}
+
+.product-item:hover::before,
+.product-info:hover::before,
+.product-image:hover::before { opacity: 1; }
+
+/* Underline style for inline links (outside menu/buttons) */
+a:not(#menu a):not(.product-links a) {
+  color: var(--accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* Keep legacy header links clean if used */
+header a { text-decoration: none; }
+
+/* Remove old leftover rules from previous CSS */
+.product-links ul li.link-block { border-width: 1px; }
+
+/* Ensure images never overflow */
+img { max-width: 100%; height: auto; display: block; }
+
+
+/* ================================
+   Homepage – product grid polish
+   ================================ */
+
+/* Contexte & rythme vertical cohérents avec la fiche produit */
+.product-grid {
+  margin-top: 120px;
+  padding: clamp(12px, 2.2vw, 24px);
+  gap: clamp(16px, 2.4vw, 28px);
+}
+
+/* Carte = panneau “glass” avec halo animé (mêmes effets que product-page) */
+.product-grid .product-item {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+  transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+  overflow: hidden;
+  isolation: isolate; /* utile pour les halos */
+}
+.product-grid .product-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  border-color: rgba(102,227,255,0.25);
+}
+
+/* Halo conique comme sur les panneaux de la fiche produit */
+.product-grid .product-item::before {
+  content: '';
+  position: absolute
+}
