@@ -80,7 +80,7 @@ html, body {
               radial-gradient(1200px 800px at 100% 10%, rgba(138,125,255,0.10), transparent 60%),
               var(--bg);
   color: var(--text);
-  font-family: 'Neue Helvetica', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: 'Monofonto', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
