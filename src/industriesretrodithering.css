@@ -188,9 +188,9 @@ header a { text-decoration: none; }
   #menu.open { width: 0; }
 
   .top-sub-title {
-  position: relative
-  top: 0;
-  left: 0;
+      position: relative;
+      top: 0;
+      left: 0;
   }
 
 }
