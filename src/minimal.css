@@ -1,0 +1,424 @@
+/* =========================================
+   beLow Industries — Brutalist Monochrome
+   (CSS only – no markup changes)
+   ========================================= */
+
+/* ---------- Design tokens (NB) ---------- */
+:root{
+  --bg: #ffffff;
+  --bg-alt: #f5f5f5;
+  --panel: #ffffff;
+
+  --text: #000000;
+  --muted: #555555;
+  --line: #000000;
+
+  --radius-lg: 0;
+  --radius-md: 0;
+  --radius-sm: 0;
+
+  --shadow-1: none;
+  --shadow-2: none;
+
+  --speed-fast: .12s;
+  --speed: .18s;
+  --speed-slow: .28s;
+
+  --maxw: 1200px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --speed-fast: 0s;
+    --speed: 0s;
+    --speed-slow: 0s;
+  }
+}
+
+/* ---------- Fonts ---------- */
+/* On enlève les fantaisies : police système neutre */
+
+@font-face { font-family: ""; src: local(""); } /* no-op pour neutraliser d’anciens @font-face */
+@import url(""); /* neutralisé */
+
+@font-face {
+  font-family: 'Monofonto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('media/monofonto.woff') format('woff');
+}
+@font-face {
+  font-family: 'Postus Scriptus';
+  src: url('media/postusscriptus.otf') format('opentype');
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body{
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Monofonto', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: auto !important;
+}
+
+/* plus de overlays/cursors décoratifs */
+body::after{ content:none; display:none; }
+
+img{ max-width:100%; height:auto; display:block; }
+
+/* Liens sobres */
+a{
+  color: var(--text);
+  text-underline-offset: 2px;
+}
+a:hover{ text-decoration: underline; }
+
+/* ---------- Header ---------- */
+header{
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  width: 260px;
+  border-radius: 0;
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: none;
+  transition: none;
+}
+header a{ text-decoration: none; color: var(--text); }
+
+/* ---------- Title ---------- */
+.title{
+  font-family: 'Postus Scriptus', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--text);
+  padding: 0;
+  border-radius: 0;
+  text-shadow: none;
+  display: inline-block;
+  border-bottom: 2px solid var(--line);
+}
+.title::after{ content:none; }
+
+/* ---------- Sub-title ---------- */
+.top-sub-title{
+  position: fixed;
+  top: 84px;
+  left: 16px;
+  display: inline-block;
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  backdrop-filter: none;
+  font-size: 14px;
+  white-space: nowrap;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-sub-title > *{
+  display: inline;
+  padding-right: 0;
+  animation: none;
+}
+
+/* ---------- Slide-out Menu ---------- */
+#menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 0;
+  overflow: hidden;
+  z-index: 1000;
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  text-align: right;
+  background: var(--bg);
+  border-right: 2px solid var(--line);
+  backdrop-filter: none;
+  transition: width var(--speed) linear;
+}
+#menu.open{ width: 320px; }
+
+@media (min-width:1800px){
+  #menu{ width: 320px; }
+  #menu.open{ width: 0; }
+  .top-sub-title{ position: relative; top: 0; left: 0; }
+}
+
+#menu a{
+  position: relative;
+  display: block;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0;
+  border-bottom: 1px solid var(--line);
+  text-shadow: none;
+  transition: none;
+}
+#menu a::after{ content:none; }
+#menu a:hover{
+  background: var(--bg-alt);
+  text-decoration: underline;
+}
+
+/* ---------- Main ---------- */
+main{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 24px clamp(16px, 3vw, 32px);
+}
+
+/* ---------- Product Grid ---------- */
+.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  margin-top: 120px;
+  padding: clamp(12px, 2.2vw, 24px);
+  gap: clamp(16px, 2.4vw, 28px);
+}
+.product-grid.with-sub-title{ margin-top: 148px; }
+
+/* ---------- Product Card ---------- */
+.product-grid .product-item,
+.product-item{
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 0;
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  transition: none;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  isolation: isolate;
+}
+.product-grid .product-item:hover,
+.product-item:hover{
+  background: var(--bg-alt);
+}
+
+.product-item img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+  border: 1.5px solid var(--line);
+  transition: none;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.product-name{
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--text);
+  margin: 2px 2px 8px;
+}
+
+/* ---------- Product Page ---------- */
+.product-page{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: clamp(20px, 4vw, 40px);
+  align-items: stretch;
+  margin: 120px auto 40px;
+  padding: clamp(14px, 2vw, 20px);
+}
+
+.product-info{
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 16px;
+  padding: clamp(18px, 2.4vw, 24px);
+  border-radius: 0;
+  border: 1.5px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow-1);
+  position: relative;
+  overflow: hidden;
+}
+.product-info h2{
+  margin: 0;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--text);
+  background: none;
+}
+
+.product-description{
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.6vw, 17px);
+}
+.product-description strong{ color: var(--text); }
+
+/* Prix : bloc brut, pas de dégradé */
+.product-price{
+  justify-self: start;
+  align-self: end;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--text);
+  background: none;
+  border: 2px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Image panel */
+.product-image{
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2vw, 16px);
+  border-radius: 0;
+  border: 1.5px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow-1);
+  perspective: none;
+  position: relative;
+  overflow: hidden;
+}
+.product-image img{
+  width: 100%;
+  max-width: 680px;
+  border-radius: 0;
+  border: 1.5px solid var(--line);
+  padding: 0;
+  transition: none;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ---------- Link buttons ---------- */
+.product-links ul{
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.product-links a{ text-decoration: none; color: var(--text); }
+.product-links ul li{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 0;
+  font-weight: 800;
+  letter-spacing: 0;
+  border: 1.5px solid var(--line);
+  color: var(--text);
+  background: var(--panel);
+  transition: none;
+}
+.product-links ul li.link-block{
+  background: var(--bg-alt);
+  border: 1.5px solid var(--line);
+  box-shadow: none;
+}
+.product-links ul li.link-block:hover{
+  background: #eaeaea;
+}
+.product-links ul li.links-label{
+  font-weight: 700;
+  color: var(--muted);
+  border: 1.5px dashed var(--line);
+  background: transparent;
+}
+
+/* ---------- Accent/halo cleanup ---------- */
+.product-item::before,
+.product-info::before,
+.product-image::before{ content:none; }
+
+/* ---------- Inline links (hors menu/boutons) ---------- */
+a:not(#menu a):not(.product-links a){
+  color: var(--text);
+  text-decoration: underline;
+}
+a:visited:not(#menu a):not(.product-links a){ color: var(--text); }
+a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
+
+/* ---------- Accessibility: focus states ---------- */
+:where(a,button,[role="button"],.title,.product-links ul li):focus-visible{
+  outline: 2px solid var(--line);
+  outline-offset: 2px;
+  box-shadow: none;
+  transition: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1200px){
+  .product-page{ grid-template-columns: 1fr; }
+  .product-image{ order: 2; }
+  .product-info{ order: 1; }
+}
+
+@media (max-width:960px){
+  header{ top: 12px; left: 12px; width: 228px; height: 52px; }
+  .top-sub-title{ top: 76px; left: 12px; }
+  #menu.open{ width: 50vw; }
+  .product-grid{
+    margin-top: 96px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .product-page{ margin-top: 96px; }
+
+  .product-grid .product-item{ padding: 8px; }
+
+  .product-price{
+    padding: 4px 10px;
+    font-size: 14px;
+  }
+
+  .product-name{ margin: 0; }
+}
+
+@media (max-width:560px){
+  main{ padding: 16px 14px; }
+  .product-name{ font-size: 15px; }
+  #menu{ padding-top: 100px; }
+  #menu a{ font-size: 17px; padding: 12px 22px; }
+  .product-links ul{ gap: 8px; }
+}
+
+/* ---------- Token overrides cleanup ---------- */
+:root{
+  --line: #000000;
+}
