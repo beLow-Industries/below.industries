@@ -502,7 +502,7 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
   .product-name { font-size: 15px; }
   #menu { padding-top: 100px; }
   #menu a { font-size: 17px; padding: 12px 22px; }
-  header{ box-shadow: 0 1px 0 #000, 0 6px 0 rgba(0,0,0,0.6), 0 16px 28px rgba(0,0,0,0.5); }
+  /*header{ box-shadow: 0 1px 0 #000, 0 6px 0 rgba(0,0,0,0.6), 0 16px 28px rgba(0,0,0,0.5); }*/
   .product-links ul{ gap: 8px; }
 }
 
