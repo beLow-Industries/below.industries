@@ -59,13 +59,13 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-body {
+/*body {
     filter: invert(1);
 }
 
 img {
     filter: invert(1);
-}
+}*/
 
 html, body{
   margin: 0;
