@@ -226,7 +226,7 @@ main {
 /* ---------- Product Grid ---------- */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   margin-top: 120px;
   padding: clamp(12px, 2.2vw, 24px);
   gap: clamp(16px, 2.4vw, 28px);
@@ -476,7 +476,10 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
   header { top: 12px; left: 12px; width: 228px; height: 58px; }
   .top-sub-title { top: 86px; left: 12px; }
   #menu.open { width: 50vw; }
-  .product-grid { margin-top: 108px; }
+  .product-grid {
+      margin-top: 108px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
   .product-page { margin-top: 108px; }
 
   .product-grid .product-item {
