@@ -70,7 +70,7 @@
 
 @font-face {
     font-family: 'Postus Scriptus';
-    src: url('media/postusscriptus.otf') format('otf');
+    src: url('media/postusscriptus.otf') format('opentype');
 }
 
 html, body {
