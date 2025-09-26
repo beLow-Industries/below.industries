@@ -117,7 +117,6 @@ header a{ text-decoration: none; color: var(--text); }
 .title{
   font-family: 'Postus Scriptus', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-size: 36px;
-  font-weight: 800;
   letter-spacing: 0;
   color: var(--text);
   padding: 0;
@@ -186,7 +185,6 @@ header a{ text-decoration: none; color: var(--text); }
   display: block;
   padding: 12px 24px;
   font-size: 18px;
-  font-weight: 700;
   color: var(--text);
   text-decoration: none;
   letter-spacing: 0;
@@ -255,7 +253,6 @@ main{
 
 .product-name{
   font-size: 18px;
-  font-weight: 800;
   letter-spacing: 0;
   color: var(--text);
   margin: 2px 2px 8px;
