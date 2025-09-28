@@ -78,8 +78,11 @@ html, body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  cursor: auto !important;
+  cursor: url(media/tealpoint.gif) 7 1, auto !important;
 }
+
+a:hover,
+header:hover { cursor: url(media/tealcross.gif) 16 16, auto; }
 
 /* plus de overlays/cursors décoratifs */
 body::after{ content:none; display:none; }
@@ -110,6 +113,7 @@ header{
   box-shadow: var(--shadow-1);
   backdrop-filter: none;
   transition: none;
+  cursor: pointer;
 }
 header a{ text-decoration: none; color: var(--text); }
 
