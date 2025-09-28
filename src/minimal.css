@@ -4,6 +4,9 @@
    ========================================= */
 
 /* ---------- Design tokens (NB) ---------- */
+@import url('https://fonts.cdnfonts.com/css/overpass-mono');
+@import url('https://fonts.cdnfonts.com/css/major-mono-display-2');
+
 
 :root{
   --bg: #ffffff;
@@ -50,9 +53,6 @@
   src: url('media/monofonto.woff') format('woff');
 }
 
-@import url('https://fonts.cdnfonts.com/css/overpass-mono');
-@import url('https://fonts.cdnfonts.com/css/major-mono-display-2');
-
 @font-face {
   font-family: 'Postus Scriptus';
   src: url('media/postusscriptus.otf') format('opentype');
@@ -77,7 +77,7 @@ html, body{
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Overpass Mono', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: 'Overpass Mono', sans-serif;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
