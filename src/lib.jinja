@@ -1,5 +1,5 @@
 {% macro product_item(image, name, price) %}
-<a href="{{ _o_["slugify"](name) }}.html class="product-item">
+<a href="{{ _o_["slugify"](name) }}.html" class="product-item">
     <img src="media/{{ image }}" alt="{{ name }}">
     <div class="product-name">{{ name }}</div>
     <div class="product-price">{{ price }}€</div>
