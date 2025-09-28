@@ -55,3 +55,23 @@
   - video
   - fx
   - modular
+- name: About beLow industries
+  id: about
+  image: below.png
+  price: 0
+  tags:
+  - about
+  description: |
+    <strong>beLow industries</strong> is an initiative of the <a href="https://below.black" target="_blank">beLow</a> collective 
+    aimed at being a platform for independant electronics manufacturers.
+    Areas of interest are linked to the fields of A/V performance and production, in both live and studio contexts.<br/><br/>
+    As </strong>beLow industries</strong> is a collective project, it acts a collaborative online space that you can contribute to <a href="https://github.com/beLow-Industries/below.industries" target="_blank">on GitHub</a>.
+    <br/>
+    Sales, downloads and shipments are handled by creators themselves.
+  links:
+  - name: Home
+    url: index.html
+  - name: beLow
+    url: https://below.black/
+  - name: ig
+    url: https://instagram.com/below.industries
