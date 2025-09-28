@@ -234,6 +234,7 @@ main{
   overflow: hidden;
   box-shadow: var(--shadow-1);
   isolation: isolate;
+  text-decoration: underline;
 }
 .product-grid .product-item:hover,
 .product-item:hover{
@@ -252,6 +253,10 @@ main{
 }
 
 .product-item img:hover{
+  filter: grayscale(0);
+}
+
+.product-item:hover {
   filter: grayscale(0);
 }
 
