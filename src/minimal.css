@@ -391,7 +391,7 @@ main{
 .product-image::before{ content:none; }
 
 /* ---------- Inline links (hors menu/boutons) ---------- */
-a:not(#menu a):not(.product-links a){
+a:not(#menu a):not(.product-links a):not(.product-grid a){
   color: var(--text);
   text-decoration: underline;
 }
