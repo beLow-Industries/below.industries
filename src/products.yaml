@@ -28,11 +28,6 @@
   - audio
   - fx
   - modular
-- name: TV wall 4x adapter
-  image: tvwall.jpg
-  price: 50
-  tags:
-  - video
 - name: Eclipse
   image: products/eclipse/eclipse_quart.png
   price: 120
