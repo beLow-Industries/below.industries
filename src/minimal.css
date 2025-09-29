@@ -407,6 +407,31 @@ main{
   background: transparent;
 }
 
+.product-gallery {
+  grid-column: 1 / -1;
+  display: grid;
+
+  --min: 220px;  /* per-item minimum */
+  --gap: 12px;   /* column gap */
+  --cols: 4;
+
+  display: grid;
+  gap: var(--gap);
+
+  /* Ensures 4 columns when there’s room for them; otherwise falls back to ≥220px auto-wrapping */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      max(
+        var(--min),
+        calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols))
+      ),
+      1fr
+    )
+  );
+
+}
+
 /* ---------- Accent/halo cleanup ---------- */
 .product-item::before,
 .product-info::before,
