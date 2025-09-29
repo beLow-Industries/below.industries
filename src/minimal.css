@@ -159,7 +159,7 @@ header a{ text-decoration: none; color: var(--text); }
 /* ---------- Sub-title ---------- */
 .top-sub-title{
   position: fixed;
-  top: 84px;
+  top: 97px;
   left: 16px;
   display: inline-block;
   margin: 0;
@@ -438,7 +438,7 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
 @media (max-width:960px){
   header{ top: 12px; left: 12px; width: 228px; height: 52px; }
   .title { font-size: 49px; }
-  .top-sub-title{ top: 76px; left: 12px; }
+  .top-sub-title{ top: 84px; left: 12px; }
   #menu.open{ width: 50vw; }
   .product-grid{
     margin-top: 96px;
