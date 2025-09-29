@@ -456,13 +456,13 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width:1200px){
-  .product-page{ grid-template-columns: 1fr; }
   .product-image{ order: 2; }
   .product-info{ order: 1; }
   .product-gallery{ order: 3; }
 }
 
 @media (max-width:960px){
+
   header{ top: 12px; left: 12px; width: 228px; height: 52px; }
   .title { font-size: 49px; }
   .top-sub-title{ top: 84px; left: 12px; }
@@ -471,7 +471,7 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
     margin-top: 96px;
     /*grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));*/
   }
-  .product-page{ margin-top: 96px; }
+  .product-page{ margin-top: 96px; grid-template-columns: 1fr; }
 
   .product-grid .product-item{ padding: 8px; }
 
