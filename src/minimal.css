@@ -516,6 +516,10 @@ a:hover:not(#menu a):not(.product-links a){ text-decoration-thickness: 2px; }
   #menu{ padding-top: 100px; }
   #menu a{ font-size: 17px; padding: 12px 22px; }
   .product-links ul{ gap: 8px; }
+  .product-gallery {
+
+  --min: 150px;  /* per-item minimum */
+  }
 }
 
 /* ---------- Token overrides cleanup ---------- */
