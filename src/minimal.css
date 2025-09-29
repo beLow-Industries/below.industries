@@ -457,7 +457,6 @@ main{
 
 img.zoom-on-hover {
   display: block;
-  transition: all 0.3s ease-in-out;
   cursor: zoom-in;
 }
 
