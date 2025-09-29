@@ -34,6 +34,188 @@
     /o/ endfor \o\
   </div>
 </section>
+
+<style>
+  /* Minimal styles for the provided markup */
+  .product-gallery {
+    --pg-height: 600px;      /* container height */
+    --pg-item-size: 120px;  /* uniform square size for each item */
+
+    position: relative;
+    width: 100%;
+    height: var(--pg-height);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .product-gallery > a {
+    position: absolute;
+    display: block;
+    width: var(--pg-item-size);
+    height: var(--pg-item-size);
+    text-decoration: none;
+    will-change: transform;
+  }
+
+  .product-gallery > a > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+/*
+  Bouncy, DVD-style motion with exact-looking AABB collisions + subtle jitter.
+  Targets the given markup:
+    <div class="product-gallery">
+      <a target="_blank" href="..."><img src="..."></a> ...
+    </div>
+*/
+(() => {
+  const container = document.querySelector('.product-gallery');
+  if (!container) return;
+  const anchors = Array.from(container.querySelectorAll(':scope > a'));
+
+  // ---- Motion parameters (tweak here) ----
+  const BASE_SPEED    = 50;    // px/s per item (slow default)
+  const SPEED_MULT    = 0.9;   // global multiplier
+  const SOLVER_PASSES = 3;     // collision solver iterations per frame
+  const MAX_DT        = 0.02;  // clamp big frames to reduce tunneling
+
+  // ---- Jitter (to avoid robotic motion) ----
+  const JITTER_IMPULSE = 15;   // px/s impulse magnitude on collisions
+  const MIN_SPEED      = 25;   // prevent stalling
+  const MAX_SPEED      = 120;  // avoid runaway speeds
+
+  // Derived from CSS custom property
+  const ITEM_SIZE = parseFloat(getComputedStyle(container)
+                     .getPropertyValue('--pg-item-size')) ||
+                    parseFloat(getComputedStyle(document.documentElement)
+                     .getPropertyValue('--pg-item-size')) || 120;
+  const HALF = ITEM_SIZE / 2;
+
+  const rand = (min, max) => Math.random() * (max - min) + min;
+  const sgn  = (v) => (v < 0 ? -1 : 1);
+
+  // Bodies use center-based coordinates for simpler math
+  const bodies = anchors.map(el => {
+    const { width: cw, height: ch } = container.getBoundingClientRect();
+    const x = rand(HALF, Math.max(HALF, cw - HALF));
+    const y = rand(HALF, Math.max(HALF, ch - HALF));
+    const ang = rand(0, Math.PI * 2);
+    const spd = BASE_SPEED * (0.7 + Math.random() * 0.6);
+    const vx = Math.cos(ang) * spd;
+    const vy = Math.sin(ang) * spd;
+
+    el.style.width = ITEM_SIZE + 'px';
+    el.style.height = ITEM_SIZE + 'px';
+
+    return { el, x, y, vx, vy };
+  });
+
+  function applyJitter(b) {
+    const ang = rand(0, Math.PI * 2);
+    b.vx += Math.cos(ang) * JITTER_IMPULSE;
+    b.vy += Math.sin(ang) * JITTER_IMPULSE;
+
+    const s = Math.hypot(b.vx, b.vy);
+    if (s > MAX_SPEED) {
+      const k = MAX_SPEED / (s || 1);
+      b.vx *= k; b.vy *= k;
+    } else if (s < MIN_SPEED) {
+      const k = MIN_SPEED / (s || 1);
+      b.vx *= k; b.vy *= k;
+    }
+  }
+
+  function resolvePairs() {
+    for (let i = 0; i < bodies.length; i++) {
+      for (let j = i + 1; j < bodies.length; j++) {
+        const a = bodies[i], b = bodies[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const overlapX = ITEM_SIZE - Math.abs(dx);
+        const overlapY = ITEM_SIZE - Math.abs(dy);
+
+        if (overlapX > 0 && overlapY > 0) {
+          // Separate along axis of least penetration
+          if (overlapX < overlapY) {
+            const push = (overlapX / 2) * sgn(dx || 1);
+            b.x += push; a.x -= push;
+            // Elastic swap along X
+            const vxA = a.vx; a.vx = b.vx; b.vx = vxA;
+          } else {
+            const push = (overlapY / 2) * sgn(dy || 1);
+            b.y += push; a.y -= push;
+            // Elastic swap along Y
+            const vyA = a.vy; a.vy = b.vy; b.vy = vyA;
+          }
+          // De-sync motion
+          applyJitter(a);
+          applyJitter(b);
+        }
+      }
+    }
+  }
+
+  function integrate(dt) {
+    const { width: cw, height: ch } = container.getBoundingClientRect();
+
+    for (const b of bodies) {
+      b.x += b.vx * SPEED_MULT * dt;
+      b.y += b.vy * SPEED_MULT * dt;
+
+      let hitWall = false;
+
+      if (b.x - HALF < 0)       { b.x = HALF;     b.vx = Math.abs(b.vx);  hitWall = true; }
+      else if (b.x + HALF > cw) { b.x = cw - HALF; b.vx = -Math.abs(b.vx); hitWall = true; }
+
+      if (b.y - HALF < 0)       { b.y = HALF;     b.vy = Math.abs(b.vy);  hitWall = true; }
+      else if (b.y + HALF > ch) { b.y = ch - HALF; b.vy = -Math.abs(b.vy); hitWall = true; }
+
+      if (hitWall) applyJitter(b);
+    }
+
+    for (let p = 0; p < SOLVER_PASSES; p++) resolvePairs();
+  }
+
+  function render() {
+    for (const b of bodies) {
+      b.el.style.transform = `translate(${b.x - HALF}px, ${b.y - HALF}px)`;
+    }
+  }
+
+  // Pre-resolve initial overlaps and draw once
+  for (let p = 0; p < SOLVER_PASSES * 2; p++) resolvePairs();
+  render();
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(MAX_DT, (now - last) / 1000);
+    last = now;
+    integrate(dt);
+    render();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Keep items inside the container on resize
+  const ro = new ResizeObserver(() => {
+    const { width: cw, height: ch } = container.getBoundingClientRect();
+    for (const b of bodies) {
+      b.x = Math.min(Math.max(HALF, b.x), Math.max(HALF, cw - HALF));
+      b.y = Math.min(Math.max(HALF, b.y), Math.max(HALF, ch - HALF));
+    }
+    for (let p = 0; p < SOLVER_PASSES * 2; p++) resolvePairs();
+    render();
+  });
+  ro.observe(container);
+})();
+</script>
+
+
 \o/ src["footer.html"] \o/
 \o/ _o_["end_page"]() \o/
 /o/ endfor \o\
