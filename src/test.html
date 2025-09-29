@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Minimal Gallery DVD Bounce + Jittered Collisions</title>
+<style>
+  /* Minimal, black-on-white, namespaced */
+  :root{
+    --gallery-width: 100vw;
+    --gallery-height: 70vh;
+    --gallery-item-size: 120px; /* uniform size parameter */
+  }
+
+  html, body { margin: 0; background: #fff; color: #000; }
+  #gallery.gallery-root {
+    position: relative;
+    width: var(--gallery-width);
+    height: var(--gallery-height);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .gallery-item {
+    position: absolute;
+    display: block;
+    text-decoration: none;
+    width: var(--gallery-item-size);
+    height: var(--gallery-item-size);
+    will-change: transform;
+  }
+
+  .gallery-item img,
+  .gallery-item .gallery-block {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+  <div id="gallery" class="gallery-root" aria-label="Floating image gallery">
+    <a class="gallery-item" href="https://example.com/1" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/1/400/300" alt="1"></a>
+    <a class="gallery-item" href="https://example.com/2" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/2/400/300" alt="2"></a>
+    <a class="gallery-item" href="https://example.com/3" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/3/400/300" alt="3"></a>
+    <a class="gallery-item" href="https://example.com/4" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/4/400/300" alt="4"></a>
+    <a class="gallery-item" href="https://example.com/5" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/5/400/300" alt="5"></a>
+    <a class="gallery-item" href="https://example.com/6" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/6/400/300" alt="6"></a>
+    <a class="gallery-item" href="https://example.com/7" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/7/400/300" alt="7"></a>
+    <a class="gallery-item" href="https://example.com/8" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/8/400/300" alt="8"></a>
+    <a class="gallery-item" href="https://example.com/9" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/9/400/300" alt="9"></a>
+    <a class="gallery-item" href="https://example.com/10" target="_blank" rel="noopener"><img src="https://picsum.photos/seed/10/400/300" alt="10"></a>
+  </div>
+
+<script>
+/*
+  Square AABB collisions with a touch of randomness on each bounce so it feels less robotic.
+  - All items are <a target="_blank">, uniform size via --gallery-item-size.
+  - Exact-looking collisions using multiple solver passes per frame.
+  - On any collision (wall or item), we add a small random impulse and clamp speeds.
+*/
+
+(() => {
+  const gallery = document.getElementById('gallery');
+  const items = Array.from(gallery.querySelectorAll('.gallery-item'));
+
+  // ---- Motion parameters (slow, tunable) ----
+  const BASE_SPEED   = 30;   // px/s per item
+  const SPEED_MULT   = 0.9;  // global multiplier
+  const SOLVER_PASSES = 3;   // more passes => firmer non-overlap
+  const MAX_DT        = 0.02;
+
+  // ---- "Organic" jitter parameters ----
+  const JITTER_IMPULSE = 5; // px/s magnitude added on collisions
+  const MIN_SPEED      = 25; // keep things from stalling
+  const MAX_SPEED      = 70; // avoid runaway
+
+  const SIZE = parseFloat(getComputedStyle(document.documentElement)
+                .getPropertyValue('--gallery-item-size')) || 120;
+  const HALF = SIZE / 2;
+
+  const rand = (min, max) => Math.random() * (max - min) + min;
+  const sgn = (v) => (v < 0 ? -1 : 1);
+
+  const bodies = items.map(el => {
+    const { width: gw, height: gh } = gallery.getBoundingClientRect();
+    const x = rand(HALF, Math.max(HALF, gw - HALF));
+    const y = rand(HALF, Math.max(HALF, gh - HALF));
+    const ang = rand(0, Math.PI * 2);
+    const spd = BASE_SPEED * (0.7 + Math.random() * 0.6);
+    const vx = Math.cos(ang) * spd;
+    const vy = Math.sin(ang) * spd;
+    el.style.width = SIZE + 'px';
+    el.style.height = SIZE + 'px';
+    return { el, x, y, vx, vy };
+  });
+
+  function applyJitter(b) {
+    const ang = rand(0, Math.PI * 2);
+    b.vx += Math.cos(ang) * JITTER_IMPULSE;
+    b.vy += Math.sin(ang) * JITTER_IMPULSE;
+
+    // clamp speed within [MIN_SPEED, MAX_SPEED]
+    const s = Math.hypot(b.vx, b.vy);
+    if (s > MAX_SPEED) {
+      const k = MAX_SPEED / (s || 1);
+      b.vx *= k; b.vy *= k;
+    } else if (s < MIN_SPEED) {
+      const k = MIN_SPEED / (s || 1);
+      b.vx *= k; b.vy *= k;
+    }
+  }
+
+  function resolvePairs() {
+    for (let i = 0; i < bodies.length; i++) {
+      for (let j = i + 1; j < bodies.length; j++) {
+        const a = bodies[i], b = bodies[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const overlapX = SIZE - Math.abs(dx);
+        const overlapY = SIZE - Math.abs(dy);
+
+        if (overlapX > 0 && overlapY > 0) {
+          // Separate along least penetration axis
+          if (overlapX < overlapY) {
+            const push = (overlapX / 2) * sgn(dx || 1);
+            b.x += push;
+            a.x -= push;
+
+            // 1D elastic along X: swap vx
+            const vxA = a.vx; a.vx = b.vx; b.vx = vxA;
+          } else {
+            const push = (overlapY / 2) * sgn(dy || 1);
+            b.y += push;
+            a.y -= push;
+
+            // 1D elastic along Y: swap vy
+            const vyA = a.vy; a.vy = b.vy; b.vy = vyA;
+          }
+
+          // Add a small random impulse to both bodies to de-sync motion
+          applyJitter(a);
+          applyJitter(b);
+        }
+      }
+    }
+  }
+
+  function integrate(dt) {
+    const { width: gw, height: gh } = gallery.getBoundingClientRect();
+
+    // Move + wall collisions
+    for (const b of bodies) {
+      b.x += b.vx * SPEED_MULT * dt;
+      b.y += b.vy * SPEED_MULT * dt;
+
+      let hitWall = false;
+
+      if (b.x - HALF < 0) { b.x = HALF; b.vx = Math.abs(b.vx); hitWall = true; }
+      else if (b.x + HALF > gw) { b.x = gw - HALF; b.vx = -Math.abs(b.vx); hitWall = true; }
+
+      if (b.y - HALF < 0) { b.y = HALF; b.vy = Math.abs(b.vy); hitWall = true; }
+      else if (b.y + HALF > gh) { b.y = gh - HALF; b.vy = -Math.abs(b.vy); hitWall = true; }
+
+      if (hitWall) applyJitter(b);
+    }
+
+    // Multiple passes for robust separation & jittered responses
+    for (let p = 0; p < SOLVER_PASSES; p++) resolvePairs();
+  }
+
+  function render() {
+    for (const b of bodies) {
+      b.el.style.transform = `translate(${b.x - HALF}px, ${b.y - HALF}px)`;
+    }
+  }
+
+  // Pre-resolve a bit to reduce initial overlaps
+  for (let p = 0; p < SOLVER_PASSES * 2; p++) resolvePairs();
+  render();
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(MAX_DT, (now - last) / 1000);
+    last = now;
+    integrate(dt);
+    render();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Keep inside after resize
+  const ro = new ResizeObserver(() => {
+    const { width: gw, height: gh } = gallery.getBoundingClientRect();
+    for (const b of bodies) {
+      b.x = Math.min(Math.max(HALF, b.x), Math.max(HALF, gw - HALF));
+      b.y = Math.min(Math.max(HALF, b.y), Math.max(HALF, gh - HALF));
+    }
+    for (let p = 0; p < SOLVER_PASSES * 2; p++) resolvePairs();
+    render();
+  });
+  ro.observe(gallery);
+})();
+</script>
+</body>
+</html>

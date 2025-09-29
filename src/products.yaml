@@ -12,25 +12,17 @@
   tags:
   - video
   - synth
-- name: Romejko (DIY kit)
-  id: romejko-diy
-  image: romjkopcb.jpg
-  price: 90
-  tags:
-  - video
-  - synth
-  - diy
-- name: Lav
+- name: Pattes-Tempo
   description: |
-    Raton laveur de signal analogique
-  image: FP lav.png
+    Tap tap tap
+  image: products/patte/patte_troisquart.png
   price: 60
   tags:
   - audio
-  - fx
+  - video
   - modular
-- name: Etouff
-  image: FP etouff.png
+- name: Mosfet
+  image: products/mosfet/mosfet_.troisquartpng.png
   price: 90
   tags:
   - audio
@@ -42,14 +34,14 @@
   tags:
   - video
 - name: Eclipse
-  image: FP eclipse.png
+  image: products/eclipse/eclipse_quart.png
   price: 120
   tags:
   - video
   - fx
   - modular
-- name: YCVB
-  image: FP ycvb.png
+- name: ShiftReg
+  image: products/shiftreg/shiftreg_troisquart.png
   price: 190
   tags:
   - video
