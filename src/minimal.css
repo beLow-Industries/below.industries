@@ -31,14 +31,25 @@
   --maxw: 1200px;
 }
 
-#darkmode:checked ~ * {
-  --bg: #000000;
-  --bg-alt: #111111;
-  --panel: #0a0a0a;
+/* Modern approach: no DOM positioning constraints */
+@supports selector(:root:has(#darkmode:checked)) {
+  :root:has(#darkmode:checked) {
+    /* Let the browser style form controls for dark */
+    color-scheme: dark;
 
-  --text: #ffffff;
-  --muted: #aaaaaa;
-  --line: #ffffff;
+    /* Token overrides */
+    --bg: #0b0b0b;
+    --bg-alt: #141414;
+    --panel: #0e0e0e;
+
+    --text: #f6f6f6;
+    --muted: #b3b3b3;
+    --line: #f6f6f6;
+
+    /* keep your no-shadow look */
+    --shadow-1: none;
+    --shadow-2: none;
+  }
 }
 
 /* Reduced motion */
