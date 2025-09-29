@@ -433,6 +433,27 @@ main{
 
 }
 
+
+img.zoom-on-hover {
+  transition: all 0.3s ease-in-out;
+  cursor: zoom-in;
+  z-index: 1;
+}
+
+img.zoom-on-hover:hover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60vw; /* 60% of viewport width */
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  cursor: zoom-out;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  background: white;
+}
+
 /* ---------- Accent/halo cleanup ---------- */
 .product-item::before,
 .product-info::before,
