@@ -16,6 +16,10 @@
   description: |
     Tap tap tap
   image: products/patte/patte_troisquart.png
+  gallery:
+  - products/patte/patte_face.png
+  - products/patte/patte_feedback.png
+  - products/patte/patte_feedback2.png
   price: 60
   tags:
   - audio
@@ -23,6 +27,9 @@
   - modular
 - name: Mosfet
   image: products/mosfet/mosfet_.troisquartpng.png
+  gallery:
+  - products/mosfet/mosfet_.face.png
+  - products/mosfet/mosfet_.feedback.png
   price: 90
   tags:
   - audio
@@ -30,6 +37,11 @@
   - modular
 - name: Eclipse
   image: products/eclipse/eclipse_quart.png
+  gallery:
+  - products/eclipse/eclipse_Face.png
+  - products/eclipse/eclipse_feedback.png
+  - products/eclipse/eclipse_feedback2.png
+  - products/eclipse/eclipse_profil.png
   price: 120
   tags:
   - video
@@ -37,6 +49,9 @@
   - modular
 - name: ShiftReg
   image: products/shiftreg/shiftreg_troisquart.png
+  gallery:
+  - products/shiftreg/shiftreg_face.png
+  - products/shiftreg/shiftreg_profil.png
   price: 190
   tags:
   - video
@@ -62,3 +77,5 @@
     url: https://below.black/
   - name: ig
     url: https://instagram.com/below.industries
+  - name: GitHub
+    url: https://github.com/beLow-Industries/below.industries
