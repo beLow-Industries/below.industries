@@ -275,7 +275,7 @@ main{
   border: 1.5px solid var(--line);
   transition: none;
   image-rendering: -webkit-optimize-contrast;
-  filter: grayscale(1);
+  /*filter: grayscale(1);*/
 }
 
 .product-item img:hover{
