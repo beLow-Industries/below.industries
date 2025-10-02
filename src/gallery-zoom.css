@@ -1,7 +1,9 @@
 /* Base */
 .zoom-wrapper { display:inline-block; position:relative; }
-.zoom-target { background:none; border:0; padding:0; }
+.zoom-target { background:none; border:0; padding:0; height: 100%; width: 100%; }
 .zoomable { display:block; cursor:zoom-in; }
+
+.zoom-target img { object-fit: cover; }
 
 /* Close (×) – hidden by default */
 .zoom-close {
