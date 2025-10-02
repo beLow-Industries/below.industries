@@ -371,10 +371,11 @@ main{
 /* Image panel */
 .product-image{
   display: grid;
-  place-items: center;
+  /*place-items: center;
   padding: clamp(10px, 2vw, 16px);
-  border-radius: 0;
   border: 1.5px solid var(--line);
+  */
+  border-radius: 0;
   background: var(--panel);
   box-shadow: var(--shadow-1);
   perspective: none;
