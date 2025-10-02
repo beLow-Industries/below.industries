@@ -69,6 +69,26 @@
   - video
   - fx
   - modular
+
+
+  
+- name: Turntable maintenance
+  image: below.png
+  tags:
+  - audio
+  price: TBD
+  description: |
+    Je répare vos <strong>platines</strong> mdr
+    <strong>Réparation de platines vinyles sur Lyon</strong><br>
+    <em>Diagnostic, entretien et remise en état toutes marques</em><br>
+    <strong>Contact :</strong> 06 00 00 00 00
+  links:
+  - name: Home
+    url: https://google.com
+  - name: Mail
+    url: mailto:loulc13@gmail.com
+  
+  
 - name: About beLow industries
   id: about
   image: below.png
