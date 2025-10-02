@@ -456,69 +456,79 @@ main{
 
 }
 
-
 .zoom-wrapper {
   display: inline-block;
   position: relative;
 }
 
-/* Desktop hover zoom - unchanged */
-.zoom-wrapper:hover img.zoom-on-hover {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  max-height: 90vh;
-  max-width: 90vw;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  cursor: zoom-out;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
-  background: white;
-}
-
 img.zoom-on-hover {
   display: block;
   cursor: zoom-in;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Hidden checkbox (keep it focusable; don't display:none) */
+/* Hidden checkbox (don’t use display:none so labels work) */
 .zoom-toggle {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Mobile/Touch zoom (checked state) */
-.zoom-toggle:checked + .zoom-target img.zoom-on-hover {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  max-height: 90vh;
-  max-width: 90vw;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: 9999; /* image layer */
-  cursor: zoom-out;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  border-radius: 8px;
-  background: white;
+/* Desktop / mouse devices use hover */
+@media (hover: hover) and (pointer: fine) {
+  .zoom-wrapper:hover img.zoom-on-hover {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-height: 90vh;
+    max-width: 90vw;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    cursor: zoom-out;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    background: white;
+  }
+
+  .zoom-wrapper:hover .zoom-close {
+    display: block;
+  }
 }
 
-/* Close button (×) — only in checked state, sits above image */
+/* Touch / mobile devices use checkbox toggle */
+@media (hover: none), (pointer: coarse) {
+  .zoom-toggle:checked + .zoom-target img.zoom-on-hover {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-height: 90vh;
+    max-width: 90vw;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    cursor: zoom-out;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border-radius: 8px;
+    background: white;
+  }
+
+  .zoom-target { cursor: zoom-in; }
+  .zoom-toggle:checked + .zoom-target { cursor: zoom-out; }
+}
+
+/* Close button */
 .zoom-close {
   position: fixed;
   top: 16px;
   right: 16px;
   width: 40px;
   height: 40px;
-  z-index: 10002;      /* above zoomed image */
+  z-index: 10002;
   display: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 .zoom-close::before,
 .zoom-close::after {
@@ -534,32 +544,23 @@ img.zoom-on-hover {
 .zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
 .zoom-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 
-/* Transparent click-out area — appears only when checked */
+/* Transparent fullscreen dismiss area */
 .zoom-dismiss {
   position: fixed;
   inset: 0;
   display: none;
-  z-index: 10000;      /* below close, above page; image has 9999 */
+  z-index: 10000;
   cursor: pointer;
-  /* no background color -> fully transparent, just a hit area */
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Show controls only when zoom is toggled on (mobile/touch) */
+/* Show controls when zoomed via checkbox */
 .zoom-toggle:checked ~ .zoom-close { display: block; }
 .zoom-toggle:checked ~ .zoom-dismiss { display: block; }
 
-/* Optional: larger tap targets on touch devices */
-@media (pointer: coarse) {
-  .zoom-close {
-    width: 48px;
-    height: 48px;
-    top: 20px;
-    right: 20px;
-  }
-}
-
-/* Optional: prevent background scroll while zoomed */
+/* Prevent background scroll when zoomed */
 body:has(.zoom-toggle:checked) { overflow: hidden; }
+
 
 
 
