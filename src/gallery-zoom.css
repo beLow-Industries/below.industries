@@ -1,144 +1,73 @@
-/* ─── Base ─────────────────────────────────────────────────────────── */
-.zoom-wrapper {
-  display: inline-block;
-  position: relative;
-}
+/* Base */
+.zoom-wrapper { display: inline-block; position: relative; }
 
-img.zoom-on-hover {
-  display: block;
-  cursor: zoom-in;
-}
+img.zoom-on-hover { display: block; cursor: zoom-in; }
 
-/* Hidden checkbox (keep it in the tree so <label for> works) */
 .zoom-toggle {
-  position: fixed;   /* instead of absolute */
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
+  position: fixed; top: 0; left: 0; width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
 }
 
-/* Close button (×), hidden until zoomed */
+/* Reset button chrome on the image trigger */
+.zoom-target { background: none; border: 0; padding: 0; }
+
+/* Close button (×), hidden until zoomed) */
 .zoom-close {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  z-index: 10002; /* above zoomed image (9999) and dismiss layer (10000) */
-  display: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  position: fixed; top: 16px; right: 16px; width: 40px; height: 40px;
+  z-index: 10002; display: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
-.zoom-close::before,
-.zoom-close::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 24px;
-  height: 2px;
-  background: var(--line);
-  transform-origin: center;
+.zoom-close::before, .zoom-close::after {
+  content: ""; position: absolute; top: 50%; left: 50%; width: 24px; height: 2px;
+  background: rgba(0,0,0,0.8); transform-origin: center;
 }
 .zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
 .zoom-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 
-/* Fullscreen transparent dismiss layer, hidden until zoomed */
+/* Fullscreen transparent dismiss layer */
 .zoom-dismiss {
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 10000; /* sits above page, below .zoom-close */
-  cursor: pointer;
-
-  /* Block background scroll/overscroll/pinch on mobile */
-  touch-action: none;
-  overscroll-behavior: none;
-  -webkit-overflow-scrolling: auto;
+  position: fixed; inset: 0; display: none; z-index: 10000; cursor: pointer;
+  touch-action: none; overscroll-behavior: none; -webkit-overflow-scrolling: auto;
 }
 
-/* Tap responsiveness + no blue highlights */
-.zoom-target,
-.zoom-close,
-.zoom-dismiss,
-img.zoom-on-hover {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-user-drag: none;
+/* Tap responsiveness + no blue highlight */
+.zoom-target, .zoom-close, .zoom-dismiss, img.zoom-on-hover {
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none;
 }
 
-/* Progressive enhancement: freeze document where :has() is supported */
-html:has(.zoom-toggle:checked),
-body:has(.zoom-toggle:checked) {
-  overflow: hidden;
-  overscroll-behavior: none;
-  height: 100%;
+/* Progressive enhancement: freeze document where :has() works */
+html:has(.zoom-toggle:checked), body:has(.zoom-toggle:checked) {
+  overflow: hidden; overscroll-behavior: none; height: 100%;
 }
 
-/* ─── Desktop (real hover + mouse) ─────────────────────────────────── */
+/* Desktop (hover) */
 @media (hover: hover) and (pointer: fine) {
   .zoom-wrapper:hover img.zoom-on-hover {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    max-height: 90vh;   /* fit viewport height */
-    max-width: 90vw;    /* safety on narrow screens */
-    width: auto;
-    height: auto;
+    position: fixed; top: 50%; left: 50%;
+    max-height: 90vh; max-width: 90vw; width: auto; height: auto;
     transform: translate(-50%, -50%);
-    z-index: 9999;
-    cursor: zoom-out;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
-    background: white;
-    will-change: transform, top, left;
-    backface-visibility: hidden;
+    z-index: 9999; cursor: zoom-out;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border-radius: 8px; background: white;
+    will-change: transform, top, left; backface-visibility: hidden;
   }
-
-  /* Show close button on hover (optional, matches mobile UI) */
   .zoom-wrapper:hover .zoom-close { display: block; }
 }
 
-/* ─── Mobile / Touch (checkbox-driven) ─────────────────────────────── */
+/* Mobile / touch (checkbox-driven) */
 @media (hover: none), (pointer: coarse) {
-  /* Zoom when toggled on */
   .zoom-toggle:checked + .zoom-target img.zoom-on-hover {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    max-height: 90vh;
-    max-width: 90vw;
-    width: auto;
-    height: auto;
+    position: fixed; top: 50%; left: 50%;
+    max-height: 90vh; max-width: 90vw; width: auto; height: auto;
     transform: translate(-50%, -50%);
-    z-index: 9999;
-    cursor: zoom-out;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    border-radius: 8px;
-    background: white;
-    will-change: transform, top, left;
-    backface-visibility: hidden;
+    z-index: 9999; cursor: zoom-out;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-radius: 8px; background: white;
+    will-change: transform, top, left; backface-visibility: hidden;
   }
-
-  /* Show controls while checked */
   .zoom-toggle:checked ~ .zoom-close { display: block; }
   .zoom-toggle:checked ~ .zoom-dismiss { display: block; }
 
-  /* Cursor hint on the tappable image area */
   .zoom-target { cursor: zoom-in; }
   .zoom-toggle:checked + .zoom-target { cursor: zoom-out; }
 
-  /* Bigger close target on touch */
-  .zoom-close {
-    width: 48px;
-    height: 48px;
-    top: 20px;
-    right: 20px;
-  }
+  .zoom-close { width: 48px; height: 48px; top: 20px; right: 20px; }
 }

@@ -24,34 +24,53 @@
 
 
 <script>
-/* Prevent mobile browsers from scrolling to the hidden checkbox when labels are tapped.
-   We manually toggle the checkbox instead. */
-document.addEventListener('click', function (e) {
-  const label = e.target.closest('.zoom-target, .zoom-close, .zoom-dismiss');
-  if (!label) return;
-
-  // Find the associated checkbox
-  let input = null;
-  if (label.htmlFor) {
-    input = document.getElementById(label.htmlFor);
-  } else {
-    input = label.querySelector('.zoom-toggle');
+(function () {
+  function getToggle(el) {
+    const wrap = el.closest('.zoom-wrapper');
+    return wrap ? wrap.querySelector('.zoom-toggle') : null;
   }
-  if (!input) return;
 
-  // Stop the browser's default label behavior (which causes the scroll)
-  e.preventDefault();
-
-  // Toggle logic:
-  // - tapping the image (.zoom-target) toggles the state
-  // - tapping close or dismiss always unchecks
-  if (label.classList.contains('zoom-target')) {
-    input.checked = !input.checked;
-  } else {
-    input.checked = false;
+  function toggleFrom(target, force) {
+    const input = getToggle(target);
+    if (!input) return;
+    if (typeof force === 'boolean') {
+      input.checked = force;
+    } else {
+      input.checked = !input.checked;
+    }
   }
-}, { passive: false });
+
+  // Use pointer events where available; fall back to touch/click.
+  const opts = { capture: true, passive: false };
+
+  function handler(e) {
+    const t = e.target.closest('.zoom-target, .zoom-close, .zoom-dismiss');
+    if (!t) return;
+    // Stop any default behavior before browser attempts to focus/scroll anything.
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (t.classList.contains('zoom-target')) {
+      toggleFrom(t);
+    } else {
+      toggleFrom(t, false); // close on close/dismiss
+    }
+  }
+
+  // Capture early to beat iOS default label/control behavior
+  document.addEventListener('pointerdown', handler, opts);
+  document.addEventListener('click', handler, opts);
+  document.addEventListener('touchstart', handler, opts);
+
+  // Nice-to-have: ESC closes
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.zoom-toggle:checked').forEach(i => { i.checked = false; });
+    }
+  });
+})();
 </script>
+
 
 </body>
 </html>
