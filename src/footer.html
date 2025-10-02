@@ -7,27 +7,5 @@
         }
     </script>
 
-
-<style>
-  #darkcorner {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    z-index: 9999;
-  }
-</style>
-
-<div id="darkcorner">
-<input type="checkbox" id="darkmode">🌗
-</div>
-
-<script>
-  const slider = document.getElementById('invert-slider');
-  slider.addEventListener('input', () => {
-    document.body.style.filter = `invert(${slider.value}%)`;
-  });
-</script>
-
-
 </body>
 </html>
