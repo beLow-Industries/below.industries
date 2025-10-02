@@ -231,7 +231,6 @@ header a{ text-decoration: none; color: var(--text); }
   position: absolute;
   bottom: 10px;
   left: 10px;
-  z-index: 9999;
 }
 
 /* ---------- Main ---------- */
