@@ -7,6 +7,15 @@
     <section class="product-description">
       \o/ product["description"] \o/
     </section>
+    /o/ if product["specs"] \o\
+    <section class="product-specs">
+      <ul>
+        /o/ for spec in product["specs"] \o\
+          <li>\o/ spec \o/</li>
+        /o/ endfor \o\
+      </ul>
+    </section>
+    /o/ endif \o\
     <section class="product-price">
       \o/ product["price"] \o/€
     </section>

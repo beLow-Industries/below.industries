@@ -4,6 +4,18 @@
   price: 160
   description: |
     The Romejko is a chaotic glyph-based image generator. <br> Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br> Instead, its fundamentals building blocks are <strong>glyphs</strong>, <strong class="colors">colors</strong>, and <strong>controlled c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹</strong></p>
+  specs:
+    - 12x 3-position switches
+    - 8x rotary knob
+    - 4 different resolutions
+    - 2 LFO
+    - multifunction TAP button
+    - 12 charsets + 6 wordsets
+    - sentence generator
+    - Analog RGB mixer
+    - Power via Micro USB, 5V
+    - VGA output
+
   links:
   - name: Buy
     url: https://leshauts.xyz/
