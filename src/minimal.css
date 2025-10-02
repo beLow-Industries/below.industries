@@ -463,7 +463,7 @@ main{
   position: relative;
 }
 
-/* Desktop hover zoom */
+/* Desktop hover zoom - unchanged */
 .zoom-wrapper:hover img.zoom-on-hover {
   position: fixed;
   top: 50%;
@@ -483,17 +483,17 @@ main{
 img.zoom-on-hover {
   display: block;
   cursor: zoom-in;
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Hidden checkbox toggle (for mobile) */
+/* Hidden checkbox (keep it focusable; don't display:none) */
 .zoom-toggle {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Zoom on mobile tap (checkbox checked) */
+/* Mobile/Touch zoom (checked state) */
 .zoom-toggle:checked + .zoom-target img.zoom-on-hover {
   position: fixed;
   top: 50%;
@@ -503,26 +503,24 @@ img.zoom-on-hover {
   width: auto;
   height: auto;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 9999; /* image layer */
   cursor: zoom-out;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   border-radius: 8px;
   background: white;
 }
 
-/* Close button (hidden until zoomed) */
+/* Close button (×) — only in checked state, sits above image */
 .zoom-close {
   position: fixed;
   top: 16px;
   right: 16px;
   width: 40px;
   height: 40px;
-  z-index: 10000;
+  z-index: 10002;      /* above zoomed image */
   display: none;
   cursor: pointer;
 }
-
-/* Draw the "×" */
 .zoom-close::before,
 .zoom-close::after {
   content: "";
@@ -531,19 +529,27 @@ img.zoom-on-hover {
   left: 50%;
   width: 24px;
   height: 2px;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.8);
   transform-origin: center;
 }
 .zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
 .zoom-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 
-/* Show close button when zoomed */
-.zoom-wrapper:hover .zoom-close,
-.zoom-toggle:checked ~ .zoom-close {
-  display: block;
+/* Transparent click-out area — appears only when checked */
+.zoom-dismiss {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 10000;      /* below close, above page; image has 9999 */
+  cursor: pointer;
+  /* no background color -> fully transparent, just a hit area */
 }
 
-/* Bigger tap target on touch screens */
+/* Show controls only when zoom is toggled on (mobile/touch) */
+.zoom-toggle:checked ~ .zoom-close { display: block; }
+.zoom-toggle:checked ~ .zoom-dismiss { display: block; }
+
+/* Optional: larger tap targets on touch devices */
 @media (pointer: coarse) {
   .zoom-close {
     width: 48px;
@@ -553,10 +559,9 @@ img.zoom-on-hover {
   }
 }
 
-/* Optional: disable background scroll while zoomed (mobile comfort) */
-body:has(.zoom-toggle:checked) {
-  overflow: hidden;
-}
+/* Optional: prevent background scroll while zoomed */
+body:has(.zoom-toggle:checked) { overflow: hidden; }
+
 
 
 /* ---------- Accent/halo cleanup ---------- */
