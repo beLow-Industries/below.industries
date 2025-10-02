@@ -37,16 +37,18 @@
   - audio
   - video
   - modular
+  
 - name: Mosfet
   image: products/mosfet/mosfet_.troisquartpng.png
   gallery:
   - products/mosfet/mosfet_.face.png
   - products/mosfet/mosfet_.feedback.png
-  price: 90
+  price: 50
   tags:
   - audio
   - fx
   - modular
+  
 - name: Eclipse
   image: products/eclipse/eclipse_quart.png
   gallery:
@@ -70,8 +72,23 @@
   - fx
   - modular
 
+- name: Clip
+  id: clip
+  price: 160
+  description: |
+    The Clip is a Triple - double simple effect which can create aesthetics breacks and strange glitchs
+  specs:
+    - 3x rotary knob
+    - 3x inputs jacks (2 of them are normalised)
+    - 3x outputs jack
+  links:
+  - name: Manuel
+    url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff?pvs=74
+  tags:
+  - fx
+  - video
+  - modular
 
-  
 - name: Turntable maintenance
   image: below.png
   tags:
