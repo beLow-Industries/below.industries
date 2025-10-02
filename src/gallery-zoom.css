@@ -3,15 +3,13 @@
 
 img.zoom-on-hover { display: block; cursor: zoom-in; }
 
+/* Keep the checkbox in view but invisible */
 .zoom-toggle {
   position: fixed; top: 0; left: 0; width: 1px; height: 1px;
   opacity: 0; pointer-events: none;
 }
 
-/* Reset button chrome on the image trigger */
-.zoom-target { background: none; border: 0; padding: 0; }
-
-/* Close button (×), hidden until zoomed) */
+/* Close button (×), hidden until zoomed */
 .zoom-close {
   position: fixed; top: 16px; right: 16px; width: 40px; height: 40px;
   z-index: 10002; display: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
@@ -29,9 +27,10 @@ img.zoom-on-hover { display: block; cursor: zoom-in; }
   touch-action: none; overscroll-behavior: none; -webkit-overflow-scrolling: auto;
 }
 
-/* Tap responsiveness + no blue highlight */
+/* Tap responsiveness + no highlight */
 .zoom-target, .zoom-close, .zoom-dismiss, img.zoom-on-hover {
-  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none;
 }
 
@@ -40,14 +39,14 @@ html:has(.zoom-toggle:checked), body:has(.zoom-toggle:checked) {
   overflow: hidden; overscroll-behavior: none; height: 100%;
 }
 
-/* Desktop (hover) */
+/* Desktop hover */
 @media (hover: hover) and (pointer: fine) {
   .zoom-wrapper:hover img.zoom-on-hover {
     position: fixed; top: 50%; left: 50%;
     max-height: 90vh; max-width: 90vw; width: auto; height: auto;
     transform: translate(-50%, -50%);
     z-index: 9999; cursor: zoom-out;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border-radius: 8px; background: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-radius: 8px; background: white;
     will-change: transform, top, left; backface-visibility: hidden;
   }
   .zoom-wrapper:hover .zoom-close { display: block; }

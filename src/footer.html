@@ -25,51 +25,43 @@
 
 <script>
 (function () {
+  const opts = { capture: true, passive: false };
+
   function getToggle(el) {
     const wrap = el.closest('.zoom-wrapper');
     return wrap ? wrap.querySelector('.zoom-toggle') : null;
   }
 
-  function toggleFrom(target, force) {
-    const input = getToggle(target);
-    if (!input) return;
-    if (typeof force === 'boolean') {
-      input.checked = force;
-    } else {
-      input.checked = !input.checked;
-    }
-  }
-
-  // Use pointer events where available; fall back to touch/click.
-  const opts = { capture: true, passive: false };
-
-  function handler(e) {
+  function handle(e) {
     const t = e.target.closest('.zoom-target, .zoom-close, .zoom-dismiss');
     if (!t) return;
-    // Stop any default behavior before browser attempts to focus/scroll anything.
-    e.preventDefault();
+    e.preventDefault();   // stop label default (which can focus/scroll)
     e.stopPropagation();
 
+    const toggle = getToggle(t);
+    if (!toggle) return;
+
     if (t.classList.contains('zoom-target')) {
-      toggleFrom(t);
+      toggle.checked = !toggle.checked;  // open/close on image tap
     } else {
-      toggleFrom(t, false); // close on close/dismiss
+      toggle.checked = false;            // close on × or outside
     }
   }
 
-  // Capture early to beat iOS default label/control behavior
-  document.addEventListener('pointerdown', handler, opts);
-  document.addEventListener('click', handler, opts);
-  document.addEventListener('touchstart', handler, opts);
+  // Use early handlers so the browser doesn’t run default label behavior
+  document.addEventListener('pointerdown', handle, opts);
+  document.addEventListener('click', handle, opts);
+  document.addEventListener('touchstart', handle, opts);
 
-  // Nice-to-have: ESC closes
+  // ESC closes any open zoom
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-      document.querySelectorAll('.zoom-toggle:checked').forEach(i => { i.checked = false; });
+      document.querySelectorAll('.zoom-toggle:checked').forEach(cb => cb.checked = false);
     }
   });
 })();
 </script>
+
 
 
 </body>
