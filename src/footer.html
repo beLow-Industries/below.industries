@@ -22,5 +22,36 @@
   });
 </script>
 
+
+<script>
+/* Prevent mobile browsers from scrolling to the hidden checkbox when labels are tapped.
+   We manually toggle the checkbox instead. */
+document.addEventListener('click', function (e) {
+  const label = e.target.closest('.zoom-target, .zoom-close, .zoom-dismiss');
+  if (!label) return;
+
+  // Find the associated checkbox
+  let input = null;
+  if (label.htmlFor) {
+    input = document.getElementById(label.htmlFor);
+  } else {
+    input = label.querySelector('.zoom-toggle');
+  }
+  if (!input) return;
+
+  // Stop the browser's default label behavior (which causes the scroll)
+  e.preventDefault();
+
+  // Toggle logic:
+  // - tapping the image (.zoom-target) toggles the state
+  // - tapping close or dismiss always unchecks
+  if (label.classList.contains('zoom-target')) {
+    input.checked = !input.checked;
+  } else {
+    input.checked = false;
+  }
+}, { passive: false });
+</script>
+
 </body>
 </html>
