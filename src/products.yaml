@@ -1,7 +1,14 @@
 - name: Romejko (assembled)
   id: romejko
-  image: romejko.jpg
-  price: 160
+  image: products/romejko/romejko_quart.jpg
+  price: 180
+  gallery:
+  - products/romejko/romejko_face.jpg
+  - products/romejko/romejko_ombre.jpg
+  - products/romejko/romejko_coin.jpg
+  - products/romejko/romejko_ombre2.jpg
+  - products/romejko/romejko_face2.jpg
+  - products/romejko/romejko_coin2.jpg
   description: |
     The Romejko is a chaotic glyph-based image generator. <br> Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br> Instead, its fundamentals building blocks are <strong>glyphs</strong>, <strong class="colors">colors</strong>, and <strong>controlled c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹</strong></p>
   specs:
@@ -110,8 +117,7 @@
     url: https://google.com
   - name: Mail
     url: mailto:loulc13@gmail.com
-  
-  
+
 - name: About beLow industries
   id: about
   image: below.png
