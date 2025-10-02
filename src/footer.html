@@ -24,135 +24,80 @@
 
 
 <script>
-(function () {
-  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+(() => {
+  const isTouch = matchMedia('(hover: none), (pointer: coarse)').matches;
 
-  // Body scroll lock helpers (unchanged)
-  let scrollLock = { locked: false, y: 0 };
-  function lockScroll() {
-    if (scrollLock.locked) return;
-    scrollLock.y = window.scrollY || document.documentElement.scrollTop || 0;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollLock.y}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
-    scrollLock.locked = true;
-  }
-  function unlockScroll() {
-    if (!scrollLock.locked) return;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
-    document.body.style.overflow = '';
-    window.scrollTo(0, scrollLock.y);
-    scrollLock.locked = false;
-  }
+  // Scroll lock (no jump-to-top)
+  let lock = { on:false, y:0 };
+  const lockScroll = () => {
+    if (lock.on) return;
+    lock.y = window.scrollY || document.documentElement.scrollTop || 0;
+    Object.assign(document.body.style, {
+      position:'fixed', top:`-${lock.y}px`, left:'0', right:'0', width:'100%', overflow:'hidden'
+    });
+    lock.on = true;
+  };
+  const unlockScroll = () => {
+    if (!lock.on) return;
+    Object.assign(document.body.style, {
+      position:'', top:'', left:'', right:'', width:'', overflow:''
+    });
+    window.scrollTo(0, lock.y);
+    lock.on = false;
+  };
 
-  function bindWrapper(wrapper) {
-    const toggle  = wrapper.querySelector('.zoom-toggle');
-    const target  = wrapper.querySelector('.zoom-target');   // contains the <img>
-    const close   = wrapper.querySelector('.zoom-close');
-    const dismiss = wrapper.querySelector('.zoom-dismiss');
-    if (!toggle || !target || !close || !dismiss) return;
+  const TAP_MAX_MOVE = 10, TAP_MAX_TIME = 500;
 
-    const TAP_MAX_MOVE = 10;     // px
-    const TAP_MAX_TIME = 500;    // ms
-    let suppressClickUntil = 0;
+  const bind = (wrap) => {
+    const target  = wrap.querySelector('.zoom-target');
+    const close   = wrap.querySelector('.zoom-close');
+    const dismiss = wrap.querySelector('.zoom-dismiss');
+    if (!target || !close || !dismiss) return;
 
-    function setChecked(checked) {
-      toggle.checked = checked;
-      toggle.blur();             // avoid any focus-induced scroll
-      if (checked) lockScroll(); else unlockScroll();
-    }
-    function toggleChecked() { setChecked(!toggle.checked); }
-    const now = () => performance.now();
+    const open  = () => { wrap.classList.add('is-open'); lockScroll(); };
+    const closeAll = () => { wrap.classList.remove('is-open'); unlockScroll(); };
+    const toggle = () => { wrap.classList.contains('is-open') ? closeAll() : open(); };
 
-    // --- TARGET (image) ---
+    // Desktop click (optional): keep but hover already handles UX
+    if (!isTouch) target.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
+
     if (isTouch) {
-      let startX = 0, startY = 0, startT = 0, moved = false, touchId = null;
-
+      // Tap heuristic (don’t block scrolling)
+      let id=null, sx=0, sy=0, st=0, moved=false;
       target.addEventListener('touchstart', (e) => {
-        if (e.touches.length !== 1) { touchId = null; return; } // ignore multi-touch (pinch)
+        if (e.touches.length !== 1) { id=null; return; }
         const t = e.touches[0];
-        touchId = t.identifier;
-        startX = t.clientX; startY = t.clientY; startT = now(); moved = false;
-        // Do NOT preventDefault here—allow scrolling if it becomes a pan.
-      }, { passive: true });
+        id = t.identifier; sx = t.clientX; sy = t.clientY; st = performance.now(); moved = false;
+      }, {passive:true});
 
       target.addEventListener('touchmove', (e) => {
-        if (touchId == null) return;
-        const t = [...e.touches].find(tt => tt.identifier === touchId);
-        if (!t) return;
-        const dx = t.clientX - startX, dy = t.clientY - startY;
-        if (Math.hypot(dx, dy) > TAP_MAX_MOVE) moved = true;
-        // Do NOT preventDefault—let the page scroll.
-      }, { passive: true });
+        if (id==null) return;
+        const t = [...e.touches].find(tt => tt.identifier===id); if (!t) return;
+        if (Math.hypot(t.clientX - sx, t.clientY - sy) > TAP_MAX_MOVE) moved = true;
+      }, {passive:true});
 
       target.addEventListener('touchend', (e) => {
-        // Identify the ending touch
-        const t = e.changedTouches[0];
-        if (touchId != null && t.identifier !== touchId) return;
+        const t = e.changedTouches[0]; if (id!=null && t.identifier!==id) return;
+        const tap = !moved && (performance.now()-st) <= TAP_MAX_TIME && e.touches.length===0;
+        if (tap) { e.preventDefault(); e.stopPropagation(); toggle(); }
+        id=null;
+      }, {passive:false});
 
-        const duration = now() - startT;
-        const isTap = !moved && duration <= TAP_MAX_TIME && e.touches.length === 0;
-
-        if (isTap) {
-          e.preventDefault();    // treat as a tap; stop synthetic click effects
-          e.stopPropagation();
-          suppressClickUntil = now() + 350;
-          toggleChecked();
-        } else {
-          // It was a scroll/pan; don't toggle, don't suppress clicks.
-        }
-
-        touchId = null;
-      }, { passive: false });
+      // Close handlers
+      const closeHandler = (e) => { e.preventDefault(); e.stopPropagation(); closeAll(); };
+      close.addEventListener('touchend', closeHandler, {passive:false});
+      close.addEventListener('click',   closeHandler, {passive:false});
+      dismiss.addEventListener('touchend', closeHandler, {passive:false});
+      dismiss.addEventListener('click',   closeHandler, {passive:false});
     }
 
-    // Mouse / keyboard click on the image trigger (desktop)
-    target.addEventListener('click', (e) => {
-      // Ignore the synthetic click right after a touch tap we already handled
-      if (now() < suppressClickUntil) { e.preventDefault(); e.stopPropagation(); return; }
-      e.preventDefault();
-      e.stopPropagation();
-      toggleChecked();
-    }, { passive: false });
+    // ESC closes (desktop keyboard)
+    document.addEventListener('keydown', (e) => { if (e.key==='Escape') closeAll(); });
+  };
 
-    // --- CLOSE (×) ---
-    function handleCloseEvent(e, isTouchEvt) {
-      if (isTouchEvt) suppressClickUntil = now() + 350;
-      e.preventDefault(); e.stopPropagation();
-      setChecked(false);
-    }
-    if (isTouch) close.addEventListener('touchend', (e) => handleCloseEvent(e, true), { passive: false });
-    close.addEventListener('click', (e) => handleCloseEvent(e, false), { passive: false });
-
-    // --- DISMISS (transparent fullscreen) ---
-    if (isTouch) dismiss.addEventListener('touchend', (e) => handleCloseEvent(e, true), { passive: false });
-    dismiss.addEventListener('click', (e) => handleCloseEvent(e, false), { passive: false });
-  }
-
-  // Bind all wrappers on the page
-  document.querySelectorAll('.zoom-wrapper').forEach(bindWrapper);
-
-  // ESC closes any open zoom
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.zoom-toggle:checked').forEach(cb => (cb.checked = false));
-      unlockScroll();
-    }
-  });
+  document.querySelectorAll('.zoom-wrapper').forEach(bind);
 })();
 </script>
-
-
-
-
-
 
 </body>
 </html>

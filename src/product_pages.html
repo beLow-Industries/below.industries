@@ -44,16 +44,12 @@
 
 
         <div class="zoom-wrapper">
-          <input type="checkbox" id="zoom-\o/ loop.index \o/" class="zoom-toggle" />
-          <!-- Clicking/tapping this label toggles zoom on mobile -->
-          <label class="zoom-target">
-          <img src="media/\o/ item \o/" alt="" class="zoom-on-hover" />
-          </label>
-
-          <!-- Fixed close button appears only when zoomed -->
-          <label class="zoom-close" aria-label="Close"></label>
-          <label class="zoom-dismiss" aria-hidden="true"></label>
-        </div>
+  <div class="zoom-target" role="button" tabindex="0" aria-label="Zoom image">
+    <img src="media/\o/ item \o/" alt="" class="zoomable">
+  </div>
+  <div class="zoom-close" role="button" aria-label="Close"></div>
+  <div class="zoom-dismiss" aria-hidden="true"></div>
+</div>
 
     /o/ endfor \o\
   </div>

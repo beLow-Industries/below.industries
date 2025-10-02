@@ -1,67 +1,56 @@
 /* Base */
-.zoom-wrapper { display: inline-block; position: relative; }
+.zoom-wrapper { display:inline-block; position:relative; }
+.zoom-target { background:none; border:0; padding:0; }
+.zoomable { display:block; cursor:zoom-in; }
 
-img.zoom-on-hover { display: block; cursor: zoom-in; }
-
-/* Keep the checkbox in view but invisible */
-.zoom-toggle {
-  position: fixed; top: 0; left: 0; width: 1px; height: 1px;
-  opacity: 0; pointer-events: none;
-}
-
-/* Close button (×), hidden until zoomed */
+/* Close (×) – hidden by default */
 .zoom-close {
-  position: fixed; top: 16px; right: 16px; width: 40px; height: 40px;
-  z-index: 10002; display: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+  position:fixed; top:16px; right:16px; width:40px; height:40px;
+  display:none; cursor:pointer; z-index:10002; -webkit-tap-highlight-color:transparent;
 }
 .zoom-close::before, .zoom-close::after {
-  content: ""; position: absolute; top: 50%; left: 50%; width: 24px; height: 2px;
-  background: rgba(0,0,0,0.8); transform-origin: center;
+  content:""; position:absolute; top:50%; left:50%; width:24px; height:2px;
+  background:rgba(0,0,0,.8); transform-origin:center;
 }
-.zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
-.zoom-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+.zoom-close::before { transform:translate(-50%,-50%) rotate(45deg); }
+.zoom-close::after  { transform:translate(-50%,-50%) rotate(-45deg); }
 
 /* Fullscreen transparent dismiss layer */
 .zoom-dismiss {
-  position: fixed; inset: 0; display: none; z-index: 10000; cursor: pointer;
-  touch-action: none; overscroll-behavior: none; -webkit-overflow-scrolling: auto;
+  position:fixed; inset:0; display:none; cursor:pointer; z-index:10000;
+  touch-action:none; overscroll-behavior:none; -webkit-overflow-scrolling:auto;
 }
 
-/* Tap responsiveness + no highlight */
-.zoom-target, .zoom-close, .zoom-dismiss, img.zoom-on-hover {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none;
+/* Touch niceties */
+.zoom-target, .zoom-close, .zoom-dismiss, .zoomable {
+  touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+  user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; -webkit-user-drag:none;
 }
 
-/* Desktop hover */
-@media (hover: hover) and (pointer: fine) {
-  .zoom-wrapper:hover img.zoom-on-hover {
-    position: fixed; top: 50%; left: 50%;
-    max-height: 90vh; max-width: 90vw; width: auto; height: auto;
-    transform: translate(-50%, -50%);
-    z-index: 9999; cursor: zoom-out;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-radius: 8px; background: white;
-    will-change: transform, top, left; backface-visibility: hidden;
+/* Desktop (real hover only) */
+@media (hover:hover) and (pointer:fine) {
+  .zoom-wrapper:hover .zoomable {
+    position:fixed; top:50%; left:50%;
+    max-height:90vh; max-width:90vw; width:auto; height:auto;
+    transform:translate(-50%,-50%); z-index:9999; cursor:zoom-out;
+    box-shadow:0 8px 24px rgba(0,0,0,.4); border-radius:8px; background:#fff;
+    will-change:transform, top, left; backface-visibility:hidden;
   }
-  .zoom-wrapper:hover .zoom-close { display: block; }
+  .zoom-wrapper:hover .zoom-close { display:block; }
 }
 
-/* Mobile / touch (checkbox-driven) */
-@media (hover: none), (pointer: coarse) {
-  .zoom-toggle:checked + .zoom-target img.zoom-on-hover {
-    position: fixed; top: 50%; left: 50%;
-    max-height: 90vh; max-width: 90vw; width: auto; height: auto;
-    transform: translate(-50%, -50%);
-    z-index: 9999; cursor: zoom-out;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4); border-radius: 8px; background: white;
-    will-change: transform, top, left; backface-visibility: hidden;
+/* Mobile / touch: driven by .is-open */
+@media (hover:none), (pointer:coarse) {
+  .zoom-wrapper.is-open .zoomable {
+    position:fixed; top:50%; left:50%;
+    max-height:90vh; max-width:90vw; width:auto; height:auto;
+    transform:translate(-50%,-50%); z-index:9999; cursor:zoom-out;
+    box-shadow:0 8px 24px rgba(0,0,0,.4); border-radius:8px; background:#fff;
+    will-change:transform, top, left; backface-visibility:hidden;
   }
-  .zoom-toggle:checked ~ .zoom-close { display: block; }
-  .zoom-toggle:checked ~ .zoom-dismiss { display: block; }
+  .zoom-wrapper.is-open .zoom-close { display:block; }
+  .zoom-wrapper.is-open .zoom-dismiss { display:block; }
 
-  .zoom-target { cursor: zoom-in; }
-  .zoom-toggle:checked + .zoom-target { cursor: zoom-out; }
-
-  .zoom-close { width: 48px; height: 48px; top: 20px; right: 20px; }
+  /* Bigger close target on touch */
+  .zoom-close { width:48px; height:48px; top:20px; right:20px; }
 }
