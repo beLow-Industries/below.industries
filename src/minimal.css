@@ -333,15 +333,16 @@ main{
 .product-description strong{ color: var(--text); }
 
 .product-specs h3 {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .product-specs ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .product-specs ul li {
-  border: 1px solid var(--line);
+  padding: 2px 0 0 24px;
 }
 
 /* Prix : bloc brut, pas de dégradé */
