@@ -78,9 +78,9 @@
   - audio
   price: 10000
   description: |
-    Je répare vos <strong>platines</strong> mdr
-    <strong>Réparation de platines vinyles sur Lyon</strong><br>
-    <em>Diagnostic, entretien et remise en état toutes marques</em><br>
+    Je répare vos <strong>platines</strong> mdr <br> 
+    <strong>Réparation de platines vinyles sur Lyon</strong><br> <br> 
+    <em>Diagnostic, entretien et remise en état toutes marques</em><br> 
     <strong>Contact :</strong> 06 00 00 00 00
   links:
   - name: Home
