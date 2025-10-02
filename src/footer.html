@@ -25,36 +25,69 @@
 
 <script>
 (function () {
-  // Only run the JS toggle on touch-centric devices; desktop hover stays pure CSS.
   const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  let scrollLock = {
+    locked: false,
+    y: 0,
+  };
+
+  function lockScroll() {
+    if (scrollLock.locked) return;
+    scrollLock.y = window.scrollY || document.documentElement.scrollTop || 0;
+    // Fix the body in place at the current scroll position
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollLock.y}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden'; // safe when body is fixed
+    scrollLock.locked = true;
+  }
+
+  function unlockScroll() {
+    if (!scrollLock.locked) return;
+    // Restore body and scroll position
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollLock.y);
+    scrollLock.locked = false;
+  }
 
   function bindWrapper(wrapper) {
     const toggle  = wrapper.querySelector('.zoom-toggle');
-    const target  = wrapper.querySelector('.zoom-target');   // contains the <img>
+    const target  = wrapper.querySelector('.zoom-target');
     const close   = wrapper.querySelector('.zoom-close');
     const dismiss = wrapper.querySelector('.zoom-dismiss');
-
     if (!toggle || !target || !close || !dismiss) return;
 
     let suppressClickUntil = 0;
+    const now = () => performance.now();
 
-    function now() { return performance.now(); }
+    function setChecked(checked) {
+      toggle.checked = checked;
+      // Avoid any focus-induced scrolling
+      toggle.blur();
+      if (checked) lockScroll(); else unlockScroll();
+    }
 
-    function onTouchEndToggle(e, force) {
-      // Prevent iOS default behaviors & the subsequent synthetic click
+    function toggleChecked() {
+      setChecked(!toggle.checked);
+    }
+
+    function onTouchEnd(e, force) {
       e.preventDefault();
       e.stopPropagation();
       suppressClickUntil = now() + 350;
-
-      if (typeof force === 'boolean') {
-        toggle.checked = force;
-      } else {
-        toggle.checked = !toggle.checked;
-      }
+      if (typeof force === 'boolean') setChecked(force);
+      else toggleChecked();
     }
 
-    function onClickToggle(e, force) {
-      // Ignore the synthetic click that follows touchend
+    function onClick(e, force) {
       if (now() < suppressClickUntil) {
         e.preventDefault();
         e.stopPropagation();
@@ -62,43 +95,36 @@
       }
       e.preventDefault();
       e.stopPropagation();
-      if (typeof force === 'boolean') {
-        toggle.checked = force;
-      } else {
-        toggle.checked = !toggle.checked;
-      }
+      if (typeof force === 'boolean') setChecked(force);
+      else toggleChecked();
     }
 
-    // --- TARGET (image tap) ---
-    if (isTouch) {
-      target.addEventListener('touchend', (e) => onTouchEndToggle(e), { passive: false });
-    }
-    target.addEventListener('click', (e) => onClickToggle(e), { passive: false });
+    // TARGET (image)
+    if (isTouch) target.addEventListener('touchend', (e) => onTouchEnd(e), { passive: false });
+    target.addEventListener('click', (e) => onClick(e), { passive: false });
 
-    // --- CLOSE (×) ---
-    if (isTouch) {
-      close.addEventListener('touchend', (e) => onTouchEndToggle(e, false), { passive: false });
-    }
-    close.addEventListener('click', (e) => onClickToggle(e, false), { passive: false });
+    // CLOSE (×)
+    if (isTouch) close.addEventListener('touchend', (e) => onTouchEnd(e, false), { passive: false });
+    close.addEventListener('click', (e) => onClick(e, false), { passive: false });
 
-    // --- DISMISS (transparent fullscreen) ---
-    if (isTouch) {
-      dismiss.addEventListener('touchend', (e) => onTouchEndToggle(e, false), { passive: false });
-    }
-    dismiss.addEventListener('click', (e) => onClickToggle(e, false), { passive: false });
+    // DISMISS (full-screen)
+    if (isTouch) dismiss.addEventListener('touchend', (e) => onTouchEnd(e, false), { passive: false });
+    dismiss.addEventListener('click', (e) => onClick(e, false), { passive: false });
   }
 
   // Bind all existing wrappers
   document.querySelectorAll('.zoom-wrapper').forEach(bindWrapper);
 
-  // Optional: ESC closes any open zoom (works on desktop too)
+  // ESC closes any open zoom
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.zoom-toggle:checked').forEach(cb => (cb.checked = false));
+      unlockScroll();
     }
   });
 })();
 </script>
+
 
 
 

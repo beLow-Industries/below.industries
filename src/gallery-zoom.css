@@ -34,11 +34,6 @@ img.zoom-on-hover { display: block; cursor: zoom-in; }
   user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-user-drag: none;
 }
 
-/* Progressive enhancement: freeze document where :has() works */
-html:has(.zoom-toggle:checked), body:has(.zoom-toggle:checked) {
-  overflow: hidden; overscroll-behavior: none; height: 100%;
-}
-
 /* Desktop hover */
 @media (hover: hover) and (pointer: fine) {
   .zoom-wrapper:hover img.zoom-on-hover {
