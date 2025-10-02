@@ -5,7 +5,22 @@
             const menu = document.getElementById("menu");
             menu.classList.toggle("open");
         }
-    </script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkbox = document.querySelector("#darkmode");
+
+    // Restore state
+    const saved = localStorage.getItem("darkmode");
+    if (saved !== null) {
+      checkbox.checked = saved === "true";
+    }
+
+    // Save on change
+    checkbox.addEventListener("change", function () {
+      localStorage.setItem("darkmode", checkbox.checked);
+    });
+  });
+</script>
 
 </body>
 </html>
