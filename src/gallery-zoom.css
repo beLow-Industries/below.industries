@@ -11,7 +11,11 @@ img.zoom-on-hover {
 
 /* Hidden checkbox (keep it in the tree so <label for> works) */
 .zoom-toggle {
-  position: absolute;
+  position: fixed;   /* instead of absolute */
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
   opacity: 0;
   pointer-events: none;
 }
@@ -36,7 +40,7 @@ img.zoom-on-hover {
   left: 50%;
   width: 24px;
   height: 2px;
-  background: rgba(0,0,0,0.8);
+  background: var(--line);
   transform-origin: center;
 }
 .zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
