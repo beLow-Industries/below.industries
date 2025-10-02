@@ -2,6 +2,6 @@
 <a href="{{ _o_["slugify"](name) }}.html" class="product-item">
     <img src="media/{{ image }}" alt="{{ name }}">
     <div class="product-name">{{ name }}</div>
-    <div class="product-price">{{ price }}€</div>
+    <div class="product-price">{% if price > 0 %}{{ price }}€{% else %}FREE{% endif %}</div>
 </a>
 {% endmacro %}
