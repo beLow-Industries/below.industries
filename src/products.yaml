@@ -15,7 +15,6 @@
     - Analog RGB mixer
     - Power via Micro USB, 5V
     - VGA output
-
   links:
   - name: Buy
     url: https://leshauts.xyz/
@@ -24,6 +23,7 @@
   tags:
   - video
   - synth
+  
 - name: Pattes-Tempo
   description: |
     Tap tap tap
@@ -33,6 +33,9 @@
   - products/patte/patte_feedback.png
   - products/patte/patte_feedback2.png
   price: 60
+  links:
+  - name: Manuel
+    url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff?pvs=74
   tags:
   - audio
   - video
@@ -67,6 +70,9 @@
   - products/shiftreg/shiftreg_face.png
   - products/shiftreg/shiftreg_profil.png
   price: 190
+  links:
+  -name: Manuel
+    url: https://local-archeology-8e0.notion.site/Shift-Reg-User-Manual-26a8a11d20e980269424e33837a8ed0d?
   tags:
   - video
   - fx
@@ -83,7 +89,7 @@
     - 3x outputs jack
   links:
   - name: Manuel
-    url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff?pvs=74
+    url:  https://local-archeology-8e0.notion.site/Clip-User-Manual-2638a11d20e98054be98c76f1dc95993?
   tags:
   - fx
   - video
