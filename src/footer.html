@@ -54,15 +54,23 @@
     const dismiss = wrap.querySelector('.zoom-dismiss');
     if (!target || !close || !dismiss) return;
 
-    const open  = () => { wrap.classList.add('is-open'); lockScroll(); };
-    const closeAll = () => { wrap.classList.remove('is-open'); unlockScroll(); };
+    const open = () => { 
+      if (wrap.classList.contains('is-open')) return;
+      wrap.classList.add('is-open'); 
+      lockScroll(); 
+    };
+    const closeAll = () => { 
+      if (!wrap.classList.contains('is-open')) return;
+      wrap.classList.remove('is-open'); 
+      unlockScroll(); 
+    };
     const toggle = () => { wrap.classList.contains('is-open') ? closeAll() : open(); };
 
-    // Desktop click (optional): keep but hover already handles UX
-    if (!isTouch) target.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
+    // Always toggle on click (desktop + mobile browsers fire click after tap)
+    target.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
 
+    // Touch-only: tap heuristic so vertical scroll isn't treated as a tap
     if (isTouch) {
-      // Tap heuristic (don’t block scrolling)
       let id=null, sx=0, sy=0, st=0, moved=false;
       target.addEventListener('touchstart', (e) => {
         if (e.touches.length !== 1) { id=null; return; }
@@ -82,20 +90,29 @@
         if (tap) { e.preventDefault(); e.stopPropagation(); toggle(); }
         id=null;
       }, {passive:false});
-
-      // Close handlers
-      const closeHandler = (e) => { e.preventDefault(); e.stopPropagation(); closeAll(); };
-      close.addEventListener('touchend', closeHandler, {passive:false});
-      close.addEventListener('click',   closeHandler, {passive:false});
-      dismiss.addEventListener('touchend', closeHandler, {passive:false});
-      dismiss.addEventListener('click',   closeHandler, {passive:false});
     }
 
-    // ESC closes (desktop keyboard)
-    document.addEventListener('keydown', (e) => { if (e.key==='Escape') closeAll(); });
+    // Close handlers (apply to ALL devices)
+    const closeHandler = (e) => { e.preventDefault(); e.stopPropagation(); closeAll(); };
+    close.addEventListener('click', closeHandler, {passive:false});
+    dismiss.addEventListener('click', closeHandler, {passive:false});
+    // Also support touchend for good measure (no-op on desktop)
+    close.addEventListener('touchend', closeHandler, {passive:false});
+    dismiss.addEventListener('touchend', closeHandler, {passive:false});
   };
 
+  // Bind all wrappers
   document.querySelectorAll('.zoom-wrapper').forEach(bind);
+
+  // One global ESC handler closes whichever zoom is open
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const openWrap = document.querySelector('.zoom-wrapper.is-open');
+    if (!openWrap) return;
+    // mimic closeAll() for that wrapper
+    openWrap.classList.remove('is-open');
+    unlockScroll();
+  });
 })();
 </script>
 
