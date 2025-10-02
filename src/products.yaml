@@ -1,4 +1,4 @@
-- name: Romejko (assembled)
+- name: Romejko
   id: romejko
   image: products/romejko/romejko_quart.jpg
   price: 180
