@@ -516,6 +516,11 @@ img.zoom-on-hover {
 
   .zoom-target { cursor: zoom-in; }
   .zoom-toggle:checked + .zoom-target { cursor: zoom-out; }
+
+  .zoom-toggle:checked + .zoom-close {
+    top: 32px;
+    background-color: var(--bg);
+  }
 }
 
 /* Close button */
@@ -538,7 +543,7 @@ img.zoom-on-hover {
   left: 50%;
   width: 24px;
   height: 2px;
-  background: rgba(0,0,0,0.8);
+  background: var(--line);
   transform-origin: center;
 }
 .zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
