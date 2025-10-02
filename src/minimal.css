@@ -228,7 +228,7 @@ header a{ text-decoration: none; color: var(--text); }
 }
 
 #darkcorner {
-  position: fixed;
+  position: absolute;
   bottom: 10px;
   left: 10px;
   z-index: 9999;
@@ -463,6 +463,7 @@ main{
   position: relative;
 }
 
+/* Desktop hover zoom */
 .zoom-wrapper:hover img.zoom-on-hover {
   position: fixed;
   top: 50%;
@@ -482,7 +483,81 @@ main{
 img.zoom-on-hover {
   display: block;
   cursor: zoom-in;
+  transition: all 0.25s ease;
 }
+
+/* Hidden checkbox toggle (for mobile) */
+.zoom-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Zoom on mobile tap (checkbox checked) */
+.zoom-toggle:checked + .zoom-target img.zoom-on-hover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-height: 90vh;
+  max-width: 90vw;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  cursor: zoom-out;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  background: white;
+}
+
+/* Close button (hidden until zoomed) */
+.zoom-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  z-index: 10000;
+  display: none;
+  cursor: pointer;
+}
+
+/* Draw the "×" */
+.zoom-close::before,
+.zoom-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  background: rgba(0,0,0,0.75);
+  transform-origin: center;
+}
+.zoom-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.zoom-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+/* Show close button when zoomed */
+.zoom-wrapper:hover .zoom-close,
+.zoom-toggle:checked ~ .zoom-close {
+  display: block;
+}
+
+/* Bigger tap target on touch screens */
+@media (pointer: coarse) {
+  .zoom-close {
+    width: 48px;
+    height: 48px;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+/* Optional: disable background scroll while zoomed (mobile comfort) */
+body:has(.zoom-toggle:checked) {
+  overflow: hidden;
+}
+
 
 /* ---------- Accent/halo cleanup ---------- */
 .product-item::before,

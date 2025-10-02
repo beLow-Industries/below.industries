@@ -38,9 +38,22 @@
   </section>
   <div class="product-gallery">
     /o/ for item in product["gallery"] \o\
-        <div class="zoom-wrapper">
+        <!--<div class="zoom-wrapper">
           <img class="zoom-on-hover" src="media/\o/ item \o/"/>
+        </div>-->
+
+
+        <div class="zoom-wrapper">
+          <input type="checkbox" id="zoom-\o/ loop.index \o/" class="zoom-toggle" />
+          <!-- Clicking/tapping this label toggles zoom on mobile -->
+          <label for="zoom-\o/ loop.index \o/" class="zoom-target">
+          <img src="media/\o/ item \o/" alt="" class="zoom-on-hover" />
+          </label>
+
+          <!-- Fixed close button appears only when zoomed -->
+          <label for="zoom-\o/ loop.index \o/" class="zoom-close" aria-label="Close"></label>
         </div>
+
     /o/ endfor \o\
   </div>
 </section>
