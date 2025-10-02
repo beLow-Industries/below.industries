@@ -332,6 +332,18 @@ main{
 }
 .product-description strong{ color: var(--text); }
 
+.product-specs h3 {
+  font-size: 1em;
+}
+
+.product-specs ul {
+  list-style-type: none;
+}
+
+.product-specs ul li {
+  border: 1px solid var(--line);
+}
+
 /* Prix : bloc brut, pas de dégradé */
 .product-price{
   justify-self: start;
