@@ -47,7 +47,17 @@
   
 - name: Pattes-Tempo
   description: |
-    Tap tap tap
+    Tap-tempo meets clock divider &amp; multiplier. Sync to any external source via CV or by tapping the tempo with the dedicated key.
+    The configurable gate length and offset on subdivisions allow dialing very tight and dynamic CV gate sequences. <br/>
+    While this was designed with live analog video performance in mind, the sync and reset inputs makes it suitable for triggering rythmical events in an audio setup.
+    Works well with: LoFi Future UHG, Syntonie CBV001 / Stable
+  specs:
+  - 6 hp
+  - Tap tempo keyswitch
+  - SYNC &amps; RESET CV inputs
+  - CLK, /2, /4, /8 dual gate output with offset control
+  - /16, /3, x2 and x4 gate output 
+  - 2 see-through LEDs linked to CLK and CLK offset outputs 
   image: products/patte/patte_troisquart.png
   gallery:
   - products/patte/patte_face.png
