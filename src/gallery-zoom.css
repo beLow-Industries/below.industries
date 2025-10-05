@@ -33,7 +33,7 @@
 .zoom-wrapper.is-open .zoomable {
   position:fixed; top:50%; left:50%;
   max-height:90vh; max-width:90vw; width:auto; height:auto;
-  transform:translate(-50%,-50%); z-index:9999; cursor:zoom-out;
+  transform:translate(-50%,-50%); z-index:9999; cursor: cursor: url(media/tealzoom.gif) 16 16, auto !important;
   box-shadow:0 8px 24px rgba(0,0,0,.4); border-radius:8px; background:#fff;
   will-change:transform, top, left; backface-visibility:hidden;
 }
