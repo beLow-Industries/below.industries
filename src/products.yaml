@@ -66,7 +66,7 @@
   price: 140
   links:
   - name: Manuel
-    url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff?pvs=74
+    url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff
   tags:
   - audio
   - video
@@ -88,6 +88,9 @@
   - products/mosfet/mosfet_.face.png
   - products/mosfet/mosfet_.feedback.png
   price: 75
+  links:
+  - name: Manuel
+    url: https://local-archeology-8e0.notion.site/Mosfet-User-Manual-2638a11d20e980c6afececd539f7b892
   tags:
   - audio
   - fx
@@ -111,6 +114,8 @@
   - products/eclipse/eclipse_feedback2.png
   - products/eclipse/eclipse_profil.png
   price: 75
+  - name: Manuel
+    url: https://local-archeology-8e0.notion.site/Eclipse-User-Manual-2638a11d20e9804dbf72eb957d90260e
   tags:
   - video
   - fx
@@ -122,6 +127,15 @@
   - products/shiftreg/shiftreg_face.png
   - products/shiftreg/shiftreg_profil.png
   price: 100
+  description: |
+    Shift register <br/>
+  specs:
+  - 6 hp
+  - Input jack
+  - Clock input jack
+  - Reset input jack
+  - 8* output jacks
+  image: products/eclipse/eclipse_quart.png
   links:
   - name: Manuel
     url: https://local-archeology-8e0.notion.site/Shift-Reg-User-Manual-26a8a11d20e980269424e33837a8ed0d?
@@ -131,13 +145,15 @@
   - modular
 
 - name: Clip
+  image: below.png
   id: clip
   price: 100
   description: |
-    The Clip is a Triple - Double simple effect which can create aesthetics breacks and strange glitchs
+    The Clip is a Triple - Double simple effect<br/>
+    Which can create aesthetics breacks and strange glitchs<br/><br/>
   specs:
-    - 3x rotary knob
     - 3x inputs jacks (2 of them are normalised)
+    - 3x rotary knob
     - 3x outputs jack
   links:
   - name: Manuel
