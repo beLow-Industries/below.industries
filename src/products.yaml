@@ -63,7 +63,7 @@
   - products/patte/patte_face.png
   - products/patte/patte_feedback.png
   - products/patte/patte_feedback2.png
-  price: 60
+  price: 140
   links:
   - name: Manuel
     url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff?pvs=74
@@ -73,34 +73,55 @@
   - modular
   
 - name: Mosfet
+  description: |
+    Basic VCA / Wave-Shaper. <br/>
+    3 litle voltage followers by CV jack or Potentiometer.<br/><br/>
+  specs:
+  - 4 hp
+  - 3*
+  -   Potentiometer atenuater
+  -   Jack CV
+  -   Jack In VCA out WS
+  -   Jack Out VCA in WS
   image: products/mosfet/mosfet_.troisquartpng.png
   gallery:
   - products/mosfet/mosfet_.face.png
   - products/mosfet/mosfet_.feedback.png
-  price: 50
+  price: 75
   tags:
   - audio
   - fx
   - modular
   
 - name: Eclipse
+  description: |
+    Transform Light into CV. <br/>
+    Controll Voltages generator.<br/><br/>
+  specs:
+  - 6 hp
+  - Tap tempo keyswitch
+  - SYNC &amp; RESET CV inputs
+  - CLK, /2, /4, /8 dual gate output with offset control
+  - /16, /3, x2 and x4 gate output 
+  - 2 see-through LEDs linked to CLK and CLK offset outputs 
   image: products/eclipse/eclipse_quart.png
   gallery:
   - products/eclipse/eclipse_Face.png
   - products/eclipse/eclipse_feedback.png
   - products/eclipse/eclipse_feedback2.png
   - products/eclipse/eclipse_profil.png
-  price: 120
+  price: 75
   tags:
   - video
   - fx
   - modular
+  
 - name: ShiftReg
   image: products/shiftreg/shiftreg_troisquart.png
   gallery:
   - products/shiftreg/shiftreg_face.png
   - products/shiftreg/shiftreg_profil.png
-  price: 190
+  price: 100
   links:
   - name: Manuel
     url: https://local-archeology-8e0.notion.site/Shift-Reg-User-Manual-26a8a11d20e980269424e33837a8ed0d?
@@ -111,9 +132,9 @@
 
 - name: Clip
   id: clip
-  price: 160
+  price: 100
   description: |
-    The Clip is a Triple - double simple effect which can create aesthetics breacks and strange glitchs
+    The Clip is a Triple - Double simple effect which can create aesthetics breacks and strange glitchs
   specs:
     - 3x rotary knob
     - 3x inputs jacks (2 of them are normalised)
