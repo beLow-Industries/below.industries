@@ -114,6 +114,7 @@
   - products/eclipse/eclipse_feedback2.png
   - products/eclipse/eclipse_profil.png
   price: 75
+  links:
   - name: Manuel
     url: https://local-archeology-8e0.notion.site/Eclipse-User-Manual-2638a11d20e9804dbf72eb957d90260e
   tags:
