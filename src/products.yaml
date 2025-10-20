@@ -1,7 +1,7 @@
 - name: Romejko
   id: romejko
   image: products/romejko/romejko_quart.jpg
-  price: 180
+  price: 180 €
   gallery:
   - products/romejko/romejko_face.jpg
   - products/romejko/romejko_ombre.jpg
@@ -64,7 +64,7 @@
   - products/patte/patte_face.png
   - products/patte/patte_feedback.png
   - products/patte/patte_feedback2.png
-  price: 140
+  price: 140 €
   links:
   - name: Manuel
     url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff
@@ -92,7 +92,7 @@
   gallery:
   - products/mosfet/mosfet_.face.png
   - products/mosfet/mosfet_.feedback.png
-  price: 70
+  price: 70 €
   links:
   - name: Manuel
     url: https://local-archeology-8e0.notion.site/Mosfet-User-Manual-2638a11d20e980c6afececd539f7b892
@@ -124,7 +124,7 @@
   - products/eclipse/eclipse_feedback.png
   - products/eclipse/eclipse_feedback2.png
   - products/eclipse/eclipse_profil.png
-  price: 90
+  price: 90 €
   links:
   - name: Manuel
     url: https://local-archeology-8e0.notion.site/Eclipse-User-Manual-2638a11d20e9804dbf72eb957d90260e
@@ -143,7 +143,7 @@
   gallery:
   - products/shiftreg/shiftreg_face.png
   - products/shiftreg/shiftreg_profil.png
-  price: 100
+  price: 100 €
   description: |
     Shift register <br/>
     Pre-order only<br/><br/>
@@ -168,7 +168,7 @@
 - name: Clip
   image: below.png
   id: clip
-  price: 100
+  price: 100 €
   description: |
     The Clip is a Triple - Double simple effect<br/>
     Which can create aesthetics breacks and strange glitchs<br/><br/>
@@ -177,6 +177,7 @@
     - 3x inputs jacks (2 of them are normalised)
     - 3x rotary knob
     - 3x outputs jack
+  image: products/clip/ClipFP.PNG
   links:
   - name: Manuel
     url:  https://local-archeology-8e0.notion.site/Clip-User-Manual-2638a11d20e98054be98c76f1dc95993?
@@ -193,22 +194,20 @@
   image: below.png
   tags:
   - audio
-  price: 10000
+  price: Contact us
   description: |
     Je répare vos <strong>platines</strong> <br> 
     <strong>Réparation de platines vinyles sur Lyon</strong><br> <br> 
     <em>Diagnostic, entretien et remise en état toutes marques</em><br>
     Informations à venir<br/><br/>
   links:
-  - name: Home
-    url: https://google.com
   - name: Mail
     url: mailto:loulc13@gmail.com
 
 - name: About beLow industries
   id: about
   image: below.png
-  price: 0
+  price: Read more
   tags:
   - about
   description: |
