@@ -1,4 +1,5 @@
 DOCKER ?= docker
+BROWSER ?= firefox
 
 help: ## show this message
 	@echo "Usage: make [target]"
@@ -24,3 +25,7 @@ jinjapocalypse:
 build: jinjapocalypse ## build project
 	$(DOCKER) build jinjapocalypse -t jinjapocalypse
 	$(DOCKER) run --rm -u $(id -u):$(id -g) -v ${PWD}:/jinjapocalypse jinjapocalypse
+
+open: build ## open project on your browser
+	$(BROWSER) build/index.html
+.PHONY: open
