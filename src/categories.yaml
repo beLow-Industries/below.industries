@@ -1,6 +1,17 @@
-audio: Audio
-video: Video
-synth: Synthesizer
-fx: Effects
-modular: Modular
-diy: DIY
+- id: audio
+  name: Audio
+- id: video
+  name: Video
+- id: synth
+  name: Synthesizer
+  name_fr: Synthétiseur
+- id: fx
+  name: Effects
+  name_fr: Effets
+- id: modular
+  name: Modular
+  name_fr: Modulaire
+- id: diy
+  name: DIY
+
+

@@ -107,7 +107,7 @@ html, body{
 }
 
 a:hover,
-header:hover { cursor: url(media/tealcross.gif) 16 16, auto; }
+header:hover, label:hover { cursor: url(media/tealcross.gif) 16 16, auto; }
 
 /* plus de overlays/cursors décoratifs */
 body::after{ content:none; display:none; }
@@ -209,7 +209,7 @@ header a{ text-decoration: none; color: var(--text); }
   .top-sub-title{ position: relative; top: 0; left: 0; }
 }
 
-#menu a{
+#menu > a{
   position: relative;
   display: block;
   padding: 12px 24px;
@@ -221,8 +221,8 @@ header a{ text-decoration: none; color: var(--text); }
   text-shadow: none;
   transition: none;
 }
-#menu a::after{ content:none; }
-#menu a:hover{
+#menu > a::after{ content:none; }
+#menu > a:hover{
   background: var(--bg-alt);
   text-decoration: underline;
 }
@@ -231,6 +231,14 @@ header a{ text-decoration: none; color: var(--text); }
   position: absolute;
   bottom: 10px;
   left: 10px;
+}
+
+#darkcorner input {
+  display: none;
+}
+
+#darkcorner a {
+  text-decoration: none;
 }
 
 /* ---------- Main ---------- */
