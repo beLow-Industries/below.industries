@@ -166,7 +166,7 @@
   - modular
 
 - name: Clip
-  image: below.png
+  image: products/clip/ClipFP.PNG
   id: clip
   price: 100 €
   description: |
@@ -177,7 +177,6 @@
     - 3x inputs jacks (2 of them are normalised)
     - 3x rotary knob
     - 3x outputs jack
-  image: products/clip/ClipFP.PNG
   links:
   - name: Manuel
     url:  https://local-archeology-8e0.notion.site/Clip-User-Manual-2638a11d20e98054be98c76f1dc95993?
