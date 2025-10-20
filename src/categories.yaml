@@ -2,5 +2,6 @@ audio: Audio
 video: Video
 synth: Synthesizer
 fx: Effects
+osc: Oscilator
 modular: Modular
 diy: DIY
