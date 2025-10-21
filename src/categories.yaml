@@ -13,5 +13,6 @@
   name_fr: Modulaire
 - id: diy
   name: DIY
-
-
+- id: osc
+  name: Oscillator
+  name_fr: Oscillateur

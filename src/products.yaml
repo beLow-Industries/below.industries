@@ -55,7 +55,6 @@
   description: |
     Tap-tempo meets clock divider &amp; multiplier. <br/>
     Gate length and offset on subdivisions allow dialing dynamic CV gate sequences and precise syncing.<br/><br/>
-    Pre-order only<br/><br/>
   specs:
   - 6 hp
   - Tap tempo keyswitch
@@ -88,7 +87,6 @@
   description: |
     Basic VCA / Wave-Shaper. <br/>
     3 little Voltage Controlled Attenuator by CV jack or Potentiometer.<br/><br/>
-    Pre-order only<br/><br/>
   specs:
   - 3 hp
   - 3 Potentiometer atenuater
@@ -120,7 +118,6 @@
   description: |
     Transform Light into CV. <br/>
     Controll Voltages generator.<br/><br/>
-    Pre-order only<br/><br/>
   specs:
   - 6 hp
   - Tap tempo keyswitch
@@ -158,8 +155,7 @@
   - products/shiftreg/shiftreg_profil.png
   price: 100 €
   description: |
-    Shift register <br/>
-    Pre-order only<br/><br/>
+    8 bit Shift register <br/>
   specs:
   - 6 hp
   - Input jack
@@ -170,8 +166,8 @@
   - name: Manual
     name_fr: Manuel
     url: https://local-archeology-8e0.notion.site/Shift-Reg-User-Manual-26a8a11d20e980269424e33837a8ed0d?
-  - name: Buy
-    name_fr: Acheter
+  - name: Pre-order
+    name_fr: Précommande
     url: https://buy.stripe.com/28EfZid5m5R2gFK4eB9oc01
   - name: Contact
     url: mailto:guihery.albert@gmail.com
@@ -187,7 +183,6 @@
   description: |
     The Clip is a Triple - Double simple effect<br/>
     Which can create aesthetics breacks and strange glitchs<br/><br/>
-    Pre-order only<br/><br/>
   specs:
     - 3x inputs jacks (2 of them are normalised)
     - 3x rotary knob
@@ -196,8 +191,8 @@
   - name: Manual
     name_fr: Manuel
     url:  https://local-archeology-8e0.notion.site/Clip-User-Manual-2638a11d20e98054be98c76f1dc95993?
-  - name: Buy
-    name_fr: Acheter
+  - name: Pre-order
+    name_fr: Précommande
     url: https://buy.stripe.com/14AaEY8P6djufBG6mJ9oc00
   - name: Contact
     url: mailto:guihery.albert@gmail.com
