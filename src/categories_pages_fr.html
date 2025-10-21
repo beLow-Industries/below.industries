@@ -1,15 +1,15 @@
 /o/ for category in _o_["load_yaml"]("categories.yaml") \o\
 /o/ if category["id"] in _o_["uniq"](_o_["load_yaml"]("products.yaml"), "tags") \o\
-\o/ _o_["start_page"](category["id"] + "_en") \o/
+\o/ _o_["start_page"](category["id"] + "_fr") \o/
 <!DOCTYPE html>
-<html lang="en" translate="no">
+<html lang="fr" translate="no">
 \o/ src["header.html"] \o/
 <body>
 <main>
-\o/ src["menu.html"] \o/
-<h2 class="top-sub-title">Tagged: \o/ translate(category, "name", "en") \o/</h2>
+\o/ src["menu_fr.html"] \o/
+<h2 class="top-sub-title">Taggé: \o/ translate(category, "name", "fr") \o/</h2>
 
-\o/ category_page(category, "en") \o/
+\o/ category_page(category, "fr") \o/
 \o/ src["scripts.html"] \o/
 </main>
 </body>

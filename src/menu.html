@@ -1,0 +1,19 @@
+<header onclick="toggleMenu()">
+  <div class="title">beLow Industries</div>
+</header>
+<nav id="menu">
+  <a href="index.html">Home</a>
+  /o/ for category in _o_["load_yaml"]("categories.yaml") \o\
+  /o/ if category["id"] in _o_["uniq"](_o_["load_yaml"]("products.yaml"), "tags") \o\
+  /o/ if category["id"] != "about" \o\
+  \o/ category_item(category, "en") \o/
+  /o/ endif \o\
+  /o/ endif \o\
+  /o/ endfor \o\
+  <a href="about_en.html">About</a>
+  <div id="darkcorner">
+    <input type="checkbox" id="darkmode">
+    <label for="darkmode" id="darkmode_label">🌑</label>
+    &nbsp;<u><a href="index.html">EN</a></u> / <a href="index_fr.html">FR</a>
+  </div>
+</nav>
