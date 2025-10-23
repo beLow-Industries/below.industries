@@ -203,11 +203,11 @@
   price: 100 €
   description: |
     The Clip is a Triple - Double simple effect<br/>
-    (three effects, each made by two simple effects) <br/>
+    three effects, each made by two simple effects <br/>
     Which can create aesthetics breacks and strange glitchs<br/><br/>
   description_fr: |
     Le Clip est un Triple - Double simple effet <br/>
-    (trois effets, chacun constitués de deux effets simples) <br/>
+    trois effets, chacun constitués de deux effets simples <br/>
     Qui permet de créerdes cassures esthétiques et d'étranges glitchs. <br/><br/>
   specs:
     - 3x inputs jacks (2 of them are normalised)
