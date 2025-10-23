@@ -55,6 +55,9 @@
   description: |
     Tap-tempo meets clock divider &amp; multiplier. <br/>
     Gate length and offset on subdivisions allow dialing dynamic CV gate sequences and precise syncing.<br/><br/>
+  description_fr: |
+    Un tap-tempo rencontre un diviseur et multiplieur d'horloge. <br/>
+    Longueur de gate et decalage sur les subdivisions permet d'avoir des CV dynamiques et une synchronisation précise
   specs:
   - 6 hp
   - Tap tempo keyswitch
@@ -77,6 +80,8 @@
     url: https://buy.stripe.com/cNi6oI9TagvG2OUeTf9oc04
   - name: Contact
     url: mailto:guihery.albert@gmail.com
+  - name: Git
+    url: https://github.com/beLow-Industries/mod_pattes_tempo
   tags:
   - audio
   - video
@@ -86,7 +91,12 @@
   name: Mosfet
   description: |
     Basic VCA / Wave-Shaper. <br/>
-    3 little Voltage Controlled Attenuator by CV jack or Potentiometer.<br/><br/>
+    3 little Voltage Controlled Attenuator by CV jack or Potentiometer. <br/>
+    whith obviously a MOSFET <br/><br/>
+  description_fr: |
+    VCA / wave shaper basique. <br/>
+    3 petits Voltage Controlled Attenuator par jack ou potentiometre. <br/>
+    Avec evidement un MOSFET <br/><br/>
   specs:
   - 3 hp
   - 3 Potentiometer atenuater
@@ -107,6 +117,8 @@
     url: https://buy.stripe.com/aFa4gAd5m7ZacpufXj9oc02
   - name: Contact
     url: mailto:guihery.albert@gmail.com
+  - name: Git
+    url: https://github.com/beLow-Industries/mod-mosfet
   tags:
   - audio
   - video
@@ -117,7 +129,10 @@
   name: Eclipse
   description: |
     Transform Light into CV. <br/>
-    Controll Voltages generator.<br/><br/>
+    Controll Voltages generator. <br/><br/>
+  description_fr: |
+    Transforme la lumiere en CV. <br/>
+    Générateur de Controll Voltage. <br/><br/>
   specs:
   - 6 hp
   - Tap tempo keyswitch
@@ -141,6 +156,8 @@
     url: https://buy.stripe.com/dRm9AU7L26V6exC7qN9oc03
   - name: Contact
     url: mailto:guihery.albert@gmail.com
+  - name: Git
+    url: https://github.com/beLow-Industries/mod-eclipse
   tags:
   - audio
   - video
@@ -156,6 +173,8 @@
   price: 100 €
   description: |
     8 bit Shift register <br/>
+  description_fr: |
+    registre à decalage de 8 bits. <br/>
   specs:
   - 6 hp
   - Input jack
@@ -171,6 +190,8 @@
     url: https://buy.stripe.com/28EfZid5m5R2gFK4eB9oc01
   - name: Contact
     url: mailto:guihery.albert@gmail.com
+  - name: Git
+    url: https://github.com/beLow-Industries/mod-shiftReg
   tags:
   - video
   - fx
@@ -182,7 +203,12 @@
   price: 100 €
   description: |
     The Clip is a Triple - Double simple effect<br/>
+    (three effects, each made by two simple effects) <br/>
     Which can create aesthetics breacks and strange glitchs<br/><br/>
+  description_fr: |
+    Le Clip est un Triple - Double simple effet <br/>
+    (trois effets, chacun constitués de deux effets simples) <br/>
+    Qui permet de créerdes cassures esthétiques et d'étranges glitchs. <br/><br/>
   specs:
     - 3x inputs jacks (2 of them are normalised)
     - 3x rotary knob
@@ -196,6 +222,8 @@
     url: https://buy.stripe.com/14AaEY8P6djufBG6mJ9oc00
   - name: Contact
     url: mailto:guihery.albert@gmail.com
+  - name: Git
+    url: https://github.com/beLow-Industries/mod-clip
   tags:
   - fx
   - video
