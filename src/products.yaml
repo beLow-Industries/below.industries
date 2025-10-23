@@ -9,12 +9,12 @@
   - products/romejko/romejko_ombre2.jpg
   - products/romejko/romejko_face2.jpg
   - products/romejko/romejko_coin2.jpg
-  - products/romejko/still6.png
-  - products/romejko/still2.png
-  - products/romejko/still3.png
-  - products/romejko/still4.png
-  - products/romejko/still5.png
-  - products/romejko/still1.png
+  - products/romejko/still6.jpg
+  - products/romejko/still2.jpg
+  - products/romejko/still3.jpg
+  - products/romejko/still4.jpg
+  - products/romejko/still5.jpg
+  - products/romejko/still1.jpg
   description: |
     The Romejko is a chaotic glyph-based image generator. <br>
     Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br>
@@ -65,11 +65,11 @@
   - CLK, /2, /4, /8 dual gate output with offset control
   - /16, /3, x2 and x4 gate output 
   - 2 see-through LEDs linked to CLK and CLK offset outputs 
-  image: products/patte/patte_troisquart.png
+  image: products/patte/patte_troisquart.jpg
   gallery:
-  - products/patte/patte_face.png
-  - products/patte/patte_feedback.png
-  - products/patte/patte_feedback2.png
+  - products/patte/patte_face.jpg
+  - products/patte/patte_feedback.jpg
+  - products/patte/patte_feedback2.jpg
   price: 140 €
   links:
   - name: Manual
@@ -103,10 +103,10 @@
   - 3 Jack CV
   - 3 Jack In VCA out WS
   - 3 Jack Out VCA in WS
-  image: products/mosfet/mosfet_.troisquartpng.png
+  image: products/mosfet/mosfet_.troisquartpng.jpg
   gallery:
-  - products/mosfet/mosfet_.face.png
-  - products/mosfet/mosfet_.feedback.png
+  - products/mosfet/mosfet_.face.jpg
+  - products/mosfet/mosfet_.feedback.jpg
   price: 70 €
   links:
   - name: Manual
@@ -140,12 +140,12 @@
   - CLK, /2, /4, /8 dual gate output with offset control
   - /16, /3, x2 and x4 gate output 
   - 2 see-through LEDs linked to CLK and CLK offset outputs 
-  image: products/eclipse/eclipse_quart.png
+  image: products/eclipse/eclipse_quart.jpg
   gallery:
-  - products/eclipse/eclipse_Face.png
-  - products/eclipse/eclipse_feedback.png
-  - products/eclipse/eclipse_feedback2.png
-  - products/eclipse/eclipse_profil.png
+  - products/eclipse/eclipse_Face.jpg
+  - products/eclipse/eclipse_feedback.jpg
+  - products/eclipse/eclipse_feedback2.jpg
+  - products/eclipse/eclipse_profil.jpg
   price: 90 €
   links:
   - name: Manual
@@ -166,10 +166,10 @@
   
 - id: shiftreg
   name: ShiftReg
-  image: products/shiftreg/shiftreg_troisquart.png
+  image: products/shiftreg/shiftreg_troisquart.jpg
   gallery:
-  - products/shiftreg/shiftreg_face.png
-  - products/shiftreg/shiftreg_profil.png
+  - products/shiftreg/shiftreg_face.jpg
+  - products/shiftreg/shiftreg_profil.jpg
   price: 100 €
   description: |
     8 bit Shift register <br/>
@@ -232,7 +232,7 @@
 - id: turntable
   name: Turntable maintenance
   name_fr: Réparation de platines
-  image: below.png
+  image: below.jpg
   tags:
   - audio
   price: Contact us
@@ -254,7 +254,7 @@
 - id: about
   name: About beLow industries
   name_fr: À propos de beLow industries
-  image: below.png
+  image: below.jpg
   price: Read more
   price_fr: Lire plus
   tags:
