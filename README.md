@@ -1,3 +1,5 @@
+[![.github/workflows/ci.yml](https://github.com/beLow-Industries/below.industries/actions/workflows/ci.yml/badge.svg)](https://github.com/beLow-Industries/below.industries/actions/workflows/ci.yml)
+
 # [below.industries](https://below.industries)
 
 ## Makefile targets
@@ -7,6 +9,7 @@ Usage: make [target]
 
 Targets:
 help                 show this message
+lint                 lint project
 clean                delete any build
 build                build project
 open                 open project on your browser

@@ -1,0 +1,25 @@
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate YAML files
+        run: yamllint -d relaxed src/*.yaml
+
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+      - name: build jinjapocalypse
+        run: docker build jinjapocalypse -t jinjapocalypse
+      - name: try build project
+        run: ./build.sh

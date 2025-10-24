@@ -1,0 +1,3 @@
+[submodule "jinjapocalypse"]
+	path = jinjapocalypse
+	url = https://github.com/mortrevere/jinjapocalypse
