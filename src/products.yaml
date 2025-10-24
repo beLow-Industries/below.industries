@@ -18,7 +18,7 @@
   description: |
     The Romejko is a chaotic glyph-based image generator. <br>
     Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br>
-    Instead, its fundamentals building blocks are <strong>glyphs</strong>, 
+    Instead, its fundamentals building blocks are <strong>glyphs</strong>,
     <strong style="
       background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
       -webkit-background-clip: text;
@@ -49,7 +49,7 @@
   tags:
   - video
   - synth
-  
+
 - id: pattes-tempo
   name: Pattes-Tempo
   description: |
@@ -63,8 +63,8 @@
   - Tap tempo keyswitch
   - SYNC &amp; RESET CV inputs
   - CLK, /2, /4, /8 dual gate output with offset control
-  - /16, /3, x2 and x4 gate output 
-  - 2 see-through LEDs linked to CLK and CLK offset outputs 
+  - /16, /3, x2 and x4 gate output
+  - 2 see-through LEDs linked to CLK and CLK offset outputs
   image: products/patte/patte_troisquart.jpg
   gallery:
   - products/patte/patte_face.jpg
@@ -86,7 +86,7 @@
   - audio
   - video
   - modular
-  
+
 - id: mosfet
   name: Mosfet
   description: |
@@ -124,7 +124,7 @@
   - video
   - fx
   - modular
-  
+
 - id: eclipse
   name: Eclipse
   description: |
@@ -138,8 +138,8 @@
   - Tap tempo keyswitch
   - SYNC &amp; RESET CV inputs
   - CLK, /2, /4, /8 dual gate output with offset control
-  - /16, /3, x2 and x4 gate output 
-  - 2 see-through LEDs linked to CLK and CLK offset outputs 
+  - /16, /3, x2 and x4 gate output
+  - 2 see-through LEDs linked to CLK and CLK offset outputs
   image: products/eclipse/eclipse_quart.jpg
   gallery:
   - products/eclipse/eclipse_Face.jpg
@@ -163,7 +163,7 @@
   - video
   - fx
   - modular
-  
+
 - id: shiftreg
   name: ShiftReg
   image: products/shiftreg/shiftreg_troisquart.jpg
@@ -243,8 +243,8 @@
     <em>Diagnosis, maintenance, and refurbishment for all brands</em><br>
     Information to come<br/><br/>
   description_fr: |
-    Je répare vos <strong>platines</strong> <br> 
-    <strong>Réparation de platines vinyles sur Lyon</strong><br> <br> 
+    Je répare vos <strong>platines</strong> <br>
+    <strong>Réparation de platines vinyles sur Lyon</strong><br> <br>
     <em>Diagnostic, entretien et remise en état toutes marques</em><br>
     Informations à venir<br/><br/>
   links:
@@ -260,7 +260,7 @@
   tags:
   - about
   description: |
-    <strong>beLow industries</strong> is an initiative of the <a href="https://below.black" target="_blank">beLow</a> collective 
+    <strong>beLow industries</strong> is an initiative of the <a href="https://below.black" target="_blank">beLow</a> collective
     aimed at being a platform for independant electronics manufacturers.
     Areas of interest are linked to the fields of A/V performance and production, in both live and studio contexts.<br/><br/>
     As </strong>beLow industries</strong> is a collective project, it acts a collaborative online space that you can contribute to <a href="https://github.com/beLow-Industries/below.industries" target="_blank">on GitHub</a>.
