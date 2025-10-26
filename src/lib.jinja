@@ -1,10 +1,12 @@
 {% macro translate(object, key, lang) %}
+/o/ set lang_suffix = "_" + lang if lang != "en" else "" \o\
 \o/ object[key + "_" + lang] if key + "_" + lang in object else (object[key] if key in object else "???") \o/
 {% endmacro %}
 
 
 {% macro product_item(product, lang) %}
-<a href="\o/ product["id"] + "_" + lang \o/.html" class="product-item">
+/o/ set lang_suffix = "_" + lang if lang != "en" else "" \o\
+<a href="\o/ product["id"] + lang_suffix \o/.html" class="product-item">
     <img src="media/\o/ product["image"] \o/" alt="\o/ translate(product, "name", lang) \o/">
     <div class="product-name">\o/ translate(product, "name", lang) \o/</div>
     <div class="product-price">\o/ translate(product, "price", lang) \o/</div>
@@ -12,17 +14,18 @@
 {% endmacro %}
 
 {% macro product_page(product, lang) %}
+/o/ set lang_suffix = "_" + lang if lang != "en" else "" \o\
 <section class="product-page">
   <div class="product-info">
     <h2>\o/ translate(product, "name", lang) \o/</h2>
     <section class="product-description">
       \o/ translate(product, "description", lang) \o/
     </section>
-    /o/ if product["specs"] or product["specs" + "_" + lang] \o\
+    /o/ if product["specs"] or product["specs" + lang_suffix] \o\
     <section class="product-specs">
       <h3>Specs</h3>
       <ul>
-        /o/ for spec in (product["specs" + "_" + lang] if "specs" + "_" + lang in product else product["specs"]) \o\
+        /o/ for spec in (product["specs" + lang_suffix] if "specs" + lang_suffix in product else product["specs"]) \o\
           <li>—&nbsp;\o/ spec \o/</li>
         /o/ endfor \o\
       </ul>
@@ -68,7 +71,8 @@
 {% endmacro %}
 
 {% macro category_item(category, lang) %}
-<a href="\o/ category["id"] + "_" + lang \o/.html">\o/ translate(category, "name", lang) \o/</a>
+/o/ set lang_suffix = "_" + lang if lang != "en" else "" \o\
+<a href="\o/ category["id"] + lang_suffix \o/.html">\o/ translate(category, "name", lang) \o/</a>
 {% endmacro %}
 
 {% macro category_page(category, lang) %}
