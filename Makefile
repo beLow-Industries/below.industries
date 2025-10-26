@@ -15,14 +15,15 @@ print-%:
 	@echo -e '\033[32m$*\033[0m = $($*)'
 .PHONY: print-%
 
+lint: ## lint project
+	yamllint -d relaxed src/*.yaml
+.PHONY: lint
+
 clean: ## delete any build
 	rm -rf build
 .PHONY: clean
 
-jinjapocalypse:
-	git clone https://github.com/mortrevere/jinjapocalypse
-
-build: jinjapocalypse ## build project
+build: ## build project
 	$(DOCKER) build jinjapocalypse -t jinjapocalypse
 	$(DOCKER) run --rm -u $(id -u):$(id -g) -v ${PWD}:/jinjapocalypse jinjapocalypse
 
