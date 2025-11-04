@@ -2,14 +2,23 @@
 \o/ _o_["start_page"](product["id"] + "_fr") \o/
 <!DOCTYPE html>
 <html lang="en" translate="no">
-\o/ src["header.html"] \o/
+
+<head>
+    \o/ src["headers.html"] \o/
+    <title>\o/ translate(product, 'name', 'fr') \o/ - beLow Industries</title>
+    <meta property="og:title" content="\o/ translate(product, 'name', 'fr') \o/ - beLow Industries" />
+    <meta property="og:description" content="Fabricants d'électronique indépendants" />
+    <meta property="og:image" content="https://below.industries/media/\o/ product['image'] \o/" />
+</head>
+
 <body>
-<main>
-\o/ src["menu_fr.html"] \o/
-\o/ product_page(product, "fr") \o/
-\o/ src["scripts.html"] \o/
-</main>
+    <main>
+        \o/ src["menu_fr.html"] \o/
+        \o/ product_page(product, "fr") \o/
+        \o/ src["scripts.html"] \o/
+    </main>
 </body>
+
 </html>
 \o/ _o_["end_page"]() \o/
 /o/ endfor \o\
