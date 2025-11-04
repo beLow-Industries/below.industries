@@ -31,9 +31,11 @@
       </ul>
     </section>
     /o/ endif \o\
+    /o/ if product.get("show_price_on_product_page", True) \o\
     <section class="product-price">
       \o/ translate(product, "price", lang) \o/
     </section>
+    /o/ endif \o\
     <section class="product-links">
       <ul>
         <li class="links-label">

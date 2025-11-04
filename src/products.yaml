@@ -262,6 +262,7 @@
   - audio
   price: Contact us
   price_fr: Nous contacter
+  show_price_on_product_page: false
   description: |
     Turntable servicing and repair — depends on the model<br/><br/>
     <strong>Available in Lyon, France, pick-up
@@ -282,6 +283,7 @@
   image: below.jpg
   price: Read more
   price_fr: Lire plus
+  show_price_on_product_page: false
   tags:
   - about
   description: |
