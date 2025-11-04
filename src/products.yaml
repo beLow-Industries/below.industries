@@ -116,12 +116,12 @@
   name: Mosfet
   description: |
     Basic VCA / Wave-Shaper. <br/>
-    3 little Voltage Controlled Attenuator by CV jack or Potentiometer. <br/>
-    whith obviously a MOSFET <br/><br/>
+    3 little Voltage Controlled Attenuator by CV jack or potentiometer. <br/>
+    Powered by MOSFET, obviously. <br/><br/>
   description_fr: |
     VCA / Wave-Shaper basique. <br/>
     3 petits Voltage Controlled Attenuator par jack ou potentiomètre. <br/>
-    Avec évidemment un MOSFET <br/><br/>
+    Fonctionne avec des MOSFET, évidemment. <br/><br/>
   specs:
   - 3 hp
   - 3 Potentiometer atenuater
@@ -153,11 +153,9 @@
 - id: eclipse
   name: Eclipse
   description: |
-    Transform Light into CV. <br/>
-    Controll Voltages generator. <br/><br/>
+    Transform light into CV. <br/>
   description_fr: |
     Transforme la lumière en CV. <br/>
-    Générateur de Controll Voltage. <br/><br/>
   specs:
   - 6 hp
   - Tap tempo keyswitch
