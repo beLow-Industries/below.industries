@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr" translate="no">
-\o/ src["header.html"] \o/
+
+<head>
+    \o/ src["headers.html"] \o/
+    <title>beLow Industries</title>
+    <meta property="og:title" content="beLow Industries" />
+    <meta property="og:description" content="Fabricants d'électronique indépendants" />
+    <meta property="og:image" content="https://below.industries/media/preview_640x320.jpg" />
+</head>
+
 <body>
-<main>
-\o/ src["menu_fr.html"] \o/
-<section class="product-grid">
-    /o/ for product in _o_["load_yaml"]("products.yaml") \o\
-    \o/ product_item(product, "fr") \o/
-    /o/ endfor \o\
-</section>
-\o/ src["scripts.html"] \o/
-</main>
+    <main>
+        \o/ src["menu_fr.html"] \o/
+        <section class="product-grid">
+            /o/ for product in _o_["load_yaml"]("products.yaml") \o\
+            \o/ product_item(product, "fr") \o/
+            /o/ endfor \o\
+        </section>
+        \o/ src["scripts.html"] \o/
+    </main>
 </body>
+
 </html>
