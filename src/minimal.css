@@ -231,6 +231,8 @@ header a{ text-decoration: none; color: var(--text); }
   position: absolute;
   bottom: 10px;
   left: 10px;
+  white-space: nowrap;
+  text-align: left;
 }
 
 #darkcorner input {
@@ -239,6 +241,7 @@ header a{ text-decoration: none; color: var(--text); }
 
 #darkcorner a {
   text-decoration: none;
+  padding: 0 !important;
 }
 
 /* ---------- Main ---------- */
