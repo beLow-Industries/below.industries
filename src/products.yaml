@@ -123,11 +123,11 @@
     3 petits Voltage Controlled Attenuator par jack ou potentiomètre. <br/>
     Fonctionne avec des MOSFET, évidemment. <br/><br/>
   specs:
-  - 3 hp
-  - 3 Potentiometer atenuater
-  - 3 Jack CV
-  - 3 Jack In VCA out WS
-  - 3 Jack Out VCA in WS
+    - 3 hp
+    - 3 Potentiometer atenuater
+    - 3 Jack CV
+    - 3 Jack In VCA out WS
+    - 3 Jack Out VCA in WS
   image: products/mosfet/mosfet_.troisquartpng.jpg
   gallery:
   - products/mosfet/mosfet_.face.jpg
@@ -157,12 +157,12 @@
   description_fr: |
     Transforme la lumière en CV. <br/>
   specs:
-  - 6 hp
-  - Tap tempo keyswitch
-  - SYNC &amp; RESET CV inputs
-  - CLK, /2, /4, /8 dual gate output with offset control
-  - /16, /3, x2 and x4 gate output
-  - 2 see-through LEDs linked to CLK and CLK offset outputs
+    - 4 hp
+    - Tap tempo keyswitch
+    - SYNC &amp; RESET CV inputs
+    - CLK, /2, /4, /8 dual gate output with offset control
+    - /16, /3, x2 and x4 gate output
+    - 2 see-through LEDs linked to CLK and CLK offset outputs
   image: products/eclipse/eclipse_quart.jpg
   gallery:
   - products/eclipse/eclipse_Face.jpg
@@ -199,7 +199,7 @@
   description_fr: |
     Registre à décalage de 8 bits. <br/>
   specs:
-  - 6 hp
+  - 4 hp
   - Input jack
   - Clock input jack
   - Reset input jack
@@ -231,6 +231,7 @@
     Le Clip est un triple - double effet simpliste. <br/>
     Trois paires d'effets qui permettent de créer des cassures esthétiques et d'étranges glitchs sur les signaux vidéo. <br/><br/>
   specs:
+    - 6 hp
     - 3x inputs jacks (2 of them are normalised)
     - 6x rotary knob
     - 3x outputs jack
