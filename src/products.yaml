@@ -158,11 +158,11 @@
     Transforme la lumière en CV. <br/>
   specs:
     - 4 hp
-    - Tap tempo keyswitch
-    - SYNC &amp; RESET CV inputs
-    - CLK, /2, /4, /8 dual gate output with offset control
-    - /16, /3, x2 and x4 gate output
-    - 2 see-through LEDs linked to CLK and CLK offset outputs
+    - Luminance in
+    - CV in
+    - Attenuvertor
+    - Offset 
+    - 2 CV out
   image: products/eclipse/eclipse_quart.jpg
   gallery:
   - products/eclipse/eclipse_Face.jpg
