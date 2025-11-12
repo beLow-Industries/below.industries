@@ -278,6 +278,54 @@
   - name: Mail
     url: mailto:maloucarree@gmail.com
 
+- id: forge-steel
+  name: FORGE (Steel)
+  name_fr: FORGE (Steel)
+  image: products/forge-steel/forge-steel.jpg
+  tags:
+  - soft
+  price: Free
+  price_fr: Gratuit
+  show_price_on_product_page: false
+  description: |
+    <b>F</b>usion <b>O</b>f <b>R</b>eal-time <b>G</b>enerative <b>E</b>ffects<br><br>
+    Discover an engine where user-defined fragment shaders collide to produce stunning visuals.<br><br>
+    FORGE is an engine rendering a project into visuals.<br>
+    Using OpenGL GLSL language, it talks to your graphic card to generate layers of textures defined by the fragment shaders and outputs it to your screen.<br>
+  description_fr: |
+    <b>F</b>usion <b>O</b>f <b>R</b>eal-time <b>G</b>enerative <b>E</b>ffects<br><br>
+    Découvrez un moteur où des shaders personnalisés s'entremêlent pour produire des visuels époustouflants.<br><br>
+    Forge est un moteur qui transforme un projet en rendus graphiques.<br>
+    Utilisant le langage OpenGL GLSL, il communique avec votre carte graphique pour générer des textures définies par des shaders et les afficher à l'écran.
+  gallery:
+  - products/forge-steel/preview_1.jpg
+  - products/forge-steel/preview_2.jpg
+  - products/forge-steel/preview_3.jpg
+  - products/forge-steel/preview_4.jpg
+  - products/forge-steel/preview_5.jpg
+  - products/forge-steel/preview_6.jpg
+  - products/forge-steel/preview_7.jpg
+  - products/forge-steel/preview_8.jpg
+  - products/forge-steel/preview_9.jpg
+  - products/forge-steel/preview_10.jpg
+  specs:
+    - OpenGL graphics
+    - MIDI controller
+    - Video devices connect
+    - Pre-loaded with visuals
+    - Linux oriented
+  specs_fr:
+    - Graphiques OpenGL
+    - Controleur MIDI
+    - Connexion entrée vidéo
+    - Pré-chargé avec des visuels
+    - Orienté Linux
+  links:
+  - name: GitHub
+    url: https://github.com/klemek/forge-steel
+  - name: Demo
+    url: https://youtu.be/-RMXGxP8Uks
+
 - id: about
   name: About beLow
   name_fr: À propos de beLow
