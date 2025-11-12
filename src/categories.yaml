@@ -16,3 +16,6 @@
 - id: osc
   name: Oscillator
   name_fr: Oscillateur
+- id: soft
+  name: Software
+  name_fr: Software
