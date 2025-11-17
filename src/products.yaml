@@ -1,15 +1,28 @@
 - id: analog-vj-loops
   name: Analog VJ Loops
-  image: /products/analogvjloops.png
+  image: products/vjloops1/analogvjloops.png
   price: 0+
   price_fr: 0+
   show_price_on_product_page: false
   description: |
     This collection features a series of original visuals I created by running my own graphics through analog glitch machines and recording them directly through a CRT television. <br><br>
-    The result is a set of raw, textural, hardware-generated distortions that carry the unique warmth and unpredictability of true analog glitch. <br>
-    These visuals were used during my VJ performance at the Centre Pompidou for the Ed Banger event, as well as for the Moduland Festival in Lyon with Erd from Shakmat. <br>
+    The result is a set of raw, textural, hardware-generated distortions that carry the unique warmth and unpredictability of true analog glitch. <br><br>
+    These visuals were used during my VJ performance at the Centre Pompidou for the Ed Banger event, as well as for the Moduland Festival in Lyon with Erd from Shakmat. <br><br/>
     They’re now available for the first time as a downloadable pack for your creative projects, live shows, motion design, or personal experimentation. <br><br>
     Whether you’re a VJ, visual artist, musician, or simply a lover of distorted pixels, this pack brings authentic CRT-based glitch aesthetics straight into your workflow. <br>
+  specs:
+    - 10 video loops
+    - 1080p
+    - MP4
+    - Rescanned from high-quality CRT screen
+  gallery:
+  - products/vjloops1/1.png
+  - products/vjloops1/2.png
+  - products/vjloops1/3.png
+  - products/vjloops1/4.png
+  - products/vjloops1/5.png
+  - products/vjloops1/6.png
+  - products/vjloops1/7.png
   links:
   - name: Download
     name_fr: Télécharger
