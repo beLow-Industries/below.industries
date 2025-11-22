@@ -131,7 +131,7 @@
   - products/patte/patte_face.jpg
   - products/patte/patte_feedback.jpg
   - products/patte/patte_feedback2.jpg
-  price: 120 €
+  price: 110 €
   links:
   - name: Manual
     name_fr: Manuel
@@ -168,7 +168,7 @@
   gallery:
   - products/mosfet/mosfet_.face.jpg
   - products/mosfet/mosfet_.feedback.jpg
-  price: 60 €
+  price: 50 €
   links:
   - name: Manual
     name_fr: Manuel
@@ -205,7 +205,7 @@
   - products/eclipse/eclipse_feedback.jpg
   - products/eclipse/eclipse_feedback2.jpg
   - products/eclipse/eclipse_profil.jpg
-  price: 80 €
+  price: 70 €
   links:
   - name: Manual
     name_fr: Manuel
@@ -229,7 +229,7 @@
   gallery:
   - products/shiftreg/shiftreg_face.jpg
   - products/shiftreg/shiftreg_profil.jpg
-  price: 90 €
+  price: 80 €
   description: |
     8-bit shift register. <br/>
   description_fr: |
@@ -259,7 +259,7 @@
 - id: clip
   name: Clip
   image: products/clip/ClipFP.PNG
-  price: 90 €
+  price: 80 €
   description: |
     Clip is a triple - double basic effect.<br/>
     Three couples of effects in series which can create aesthetics breaks and strange glitchs on video signals.<br/><br/>
