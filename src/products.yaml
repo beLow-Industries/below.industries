@@ -136,9 +136,12 @@
   - name: Manual
     name_fr: Manuel
     url:  https://local-archeology-8e0.notion.site/PattesTempo-User-Manual-e0cf838ff7f44b3fac7d215c57a958ff
-  - name: Buy
-    name_fr: Acheter
+  - name: Pre-order
+    name_fr: Précommande
     url: https://buy.stripe.com/cNi6oI9TagvG2OUeTf9oc04
+  - name: Group order
+    name_fr: Commande groupée
+    url: https://buy.stripe.com/cNi3cwaXe7ZaexC5iF9oc05
   - name: Contact
     url: mailto:guihery.albert@gmail.com
   - name: Git
@@ -176,6 +179,9 @@
   - name: Buy
     name_fr: Acheter
     url: https://buy.stripe.com/aFa4gAd5m7ZacpufXj9oc02
+  - name: Group order
+    name_fr: Commande groupée
+    url: https://buy.stripe.com/cNi3cwaXe7ZaexC5iF9oc05
   - name: Contact
     url: mailto:guihery.albert@gmail.com
   - name: Git
@@ -213,6 +219,9 @@
   - name: Buy
     name_fr: Acheter
     url: https://buy.stripe.com/dRm9AU7L26V6exC7qN9oc03
+  - name: Group order
+    name_fr: Commande groupée
+    url: https://buy.stripe.com/cNi3cwaXe7ZaexC5iF9oc05
   - name: Contact
     url: mailto:guihery.albert@gmail.com
   - name: Git
@@ -247,6 +256,9 @@
   - name: Pre-order
     name_fr: Précommande
     url: https://buy.stripe.com/28EfZid5m5R2gFK4eB9oc01
+  - name: Group order
+    name_fr: Commande groupée
+    url: https://buy.stripe.com/cNi3cwaXe7ZaexC5iF9oc05
   - name: Contact
     url: mailto:guihery.albert@gmail.com
   - name: Git
@@ -282,6 +294,9 @@
   - name: Pre-order
     name_fr: Précommande
     url: https://buy.stripe.com/14AaEY8P6djufBG6mJ9oc00
+  - name: Group order
+    name_fr: Commande groupée
+    url: https://buy.stripe.com/cNi3cwaXe7ZaexC5iF9oc05
   - name: Contact
     url: mailto:guihery.albert@gmail.com
   - name: Git
