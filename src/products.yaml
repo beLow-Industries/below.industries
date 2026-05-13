@@ -372,8 +372,8 @@
     - Pré-chargé avec des visuels
     - Orienté Linux
   links:
-  - name: GitHub
-    url: https://github.com/klemek/forge-steel
+  - name: Git
+    url: https://git.klemek.fr/klemek/forge-steel
   - name: Demo
     url: https://youtu.be/-RMXGxP8Uks
 
