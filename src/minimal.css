@@ -5,6 +5,7 @@
 
 /* ---------- Design tokens (NB) ---------- */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/Iosevka/11.1.1/iosevka/iosevka.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/Iosevka/11.1.1/iosevka-aile/iosevka-aile.min.css');
 
 
 :root{
@@ -303,6 +304,11 @@ main{
 
 .product-item:hover {
   filter: grayscale(0);
+}
+
+.product-name, .product-info h2 {
+  font-family: 'Iosevka Aile Web', sans-serif;
+  font-stretch: normal;
 }
 
 .product-name{
