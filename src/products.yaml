@@ -380,7 +380,7 @@
 - id: about
   name: About beLow
   name_fr: À propos de beLow
-  image: below.jpg
+  image: below.png
   price: Read more
   price_fr: Lire plus
   show_price_on_product_page: false
