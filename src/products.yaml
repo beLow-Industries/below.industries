@@ -346,6 +346,7 @@
   image: products/forge-steel/forge-steel.jpg
   tags:
   - soft
+  - video
   price: Free
   price_fr: Gratuit
   show_price_on_product_page: false
