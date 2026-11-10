@@ -396,18 +396,19 @@
   tags:
   - video
   - modular
+  - synth
   price: Pre-launch
   price_fr: Pré-lancement
   show_price_on_product_page: false
   description: |
     <b>F</b>usion <b>O</b>f <b>R</b>eal-time <b>G</b>enerative <b>E</b>ffects<br><br>
     The power of <a href="/forge-steel.html" target="_blank">FORGE (Steel)</a> on a Raspberry Pi. <br><br>
-    Enjoy the full range of visuals and countless possibilities in a EuroRack or standalone format.<br>
+    Enjoy the full range of visuals and countless possibilities in a EuroRack or standalone format.<br><br>
     Easily control all effects with the included MIDI controller.
   description_fr: |
     <b>F</b>usion <b>O</b>f <b>R</b>eal-time <b>G</b>enerative <b>E</b>ffects<br><br>
     La puissance de <a href="/forge-steel_fr.html" target="_blank">FORGE (Steel)</a> dans une Raspberry PI.<br><br>
-    Profitez de toute la gamme de visuels et des innombrables possibilité dans un format EuroRack ou standalone.<br>
+    Profitez de toute la gamme de visuels et des innombrables possibilité dans un format EuroRack ou standalone.<br><br>
     Controllez facilement tous les effets avec un controleur MIDI inclus.
   gallery:
   - products/forge-invar/preview_1.jpg
