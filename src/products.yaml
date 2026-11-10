@@ -421,9 +421,9 @@
   specs_fr:
     - Raspberry Compute Module 5 exécutant des shaders GLSL
     - "Eurorack: 10HP - 3U (Boîtier en option)"
-    - Sortie Vidéo Composite
-    - Controleur MIDI (KORG NanoKontrol 2)
-    - 14 générateurs de visuels and 14 effets
+    - Sortie vidéo composite
+    - Contrôleur MIDI (KORG NanoKontrol 2)
+    - 14 générateurs de visuels et 14 effets
   links:
   - name: Pre-Launch Poll (FR)
     name_fr: Sondage (FR)
