@@ -388,6 +388,48 @@
   - name: Demo
     url: https://youtu.be/-RMXGxP8Uks
 
+- id: forge-invar
+  name: FORGE (Invar)
+  name_fr: FORGE (Invar)
+  image: products/forge-invar/forge-invar.jpg
+  tags:
+  - video
+  - modular
+  price: Pre-launch
+  price_fr: Pré-lancement
+  show_price_on_product_page: false
+  description: |
+    <b>F</b>usion <b>O</b>f <b>R</b>eal-time <b>G</b>enerative <b>E</b>ffects<br><br>
+    The power of <a href="/forge-steel.html" target="_blank">FORGE (Steel)</a> on a Raspberry Pi. <br><br>
+    Enjoy the full range of visuals and countless possibilities in a EuroRack or standalone format.<br>
+    Easily control all effects with the included MIDI controller.
+  description_fr: |
+    <b>F</b>usion <b>O</b>f <b>R</b>eal-time <b>G</b>enerative <b>E</b>ffects<br><br>
+    La puissance de <a href="/forge-steel_fr.html" target="_blank">FORGE (Steel)</a> dans une Raspberry PI.<br><br>
+    Profitez de toute la gamme de visuels et des innombrables possibilité dans un format EuroRack ou standalone.<br>
+    Controllez facilement tous les effets avec un controleur MIDI inclus.
+  gallery:
+  - products/forge-invar/preview_1.jpg
+  - products/forge-invar/preview_2.jpg
+  specs:
+    - Raspberry Compute Module 5 running GLSL Shaders
+    - "Eurorack: 10HP - 3U (Optional Casing)"
+    - Composite Video Out
+    - MIDI controller (KORG NanoKontrol 2)
+    - 14 visual generators and 14 effects
+  specs_fr:
+    - Raspberry Compute Module 5 exécutant des shaders GLSL
+    - "Eurorack: 10HP - 3U (Boîtier en option)"
+    - Sortie Vidéo Composite
+    - Controleur MIDI (KORG NanoKontrol 2)
+    - 14 générateurs de visuels and 14 effets
+  links:
+  - name: Pre-Launch Poll (FR)
+    name_fr: Sondage (FR)
+    url: https://forms.gle/Ce5kbjyB1DsHg6fQ7
+  - name: Git
+    url: https://git.klemek.fr/klemek/forge-invar
+
 - id: about
   name: About beLow
   name_fr: À propos de beLow
