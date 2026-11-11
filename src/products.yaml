@@ -412,16 +412,20 @@
   gallery:
   - products/forge-invar/preview_1.jpg
   - products/forge-invar/preview_2.jpg
+  - products/forge-invar/preview_3.jpg
+  - products/forge-invar/preview_4.jpg
   specs:
     - Raspberry Compute Module 5 running GLSL Shaders
     - "Eurorack: 10HP - 3U (Optional Casing)"
     - Composite Video Out
+    - OLED Monitor
     - MIDI controller (KORG NanoKontrol 2)
     - 14 visual generators and 14 effects
   specs_fr:
     - Raspberry Compute Module 5 exécutant des shaders GLSL
     - "Eurorack: 10HP - 3U (Boîtier en option)"
     - Sortie vidéo composite
+    - Moniteur OLED
     - Contrôleur MIDI (KORG NanoKontrol 2)
     - 14 générateurs de visuels et 14 effets
   links:
