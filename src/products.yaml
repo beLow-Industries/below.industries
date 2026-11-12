@@ -440,6 +440,41 @@
   - name: Git
     url: https://git.klemek.fr/klemek/forge-invar
 
+# - id: shaders-vj-loops-1
+#   name: "Shaders VJ Loops #1"
+#   image: products/shaders-vj-loops-1/thumbnail.jpg
+#   price: 0+
+#   price_fr: 0+
+#   show_price_on_product_page: true
+#   description: |
+#     This collection features visuals generated using <a href="/forge-steel.html" target="_blank">F.O.R.G.E.</a> (Fusion Of Real-time Generative Effects), a software I made from scratch that uses GLSL Shaders to create stunning visuals and effects. <br><br>
+#     Included in this pack are black and white "basic" visuals without effects so you can add your own in Resolume or any other software.
+#   description_fr: |
+#     Cette collection propose des visuels générés à l'aide de <a href="/forge-steel_fr.html" target="_blank">F.O.R.G.E.</a> (Fusion Of Real-time Generative Effects), un logiciel que j'ai développé de toutes pièces et qui utilise des shaders GLSL pour créer des visuels et des effets saisissants. <br><br>
+#     Ce pack inclut des visuels « de base » en noir et blanc, dépourvus d'effets, afin que vous puissiez y ajouter vos propres traitements dans Resolume ou tout autre logiciel.
+#   specs:
+#     - 10 video loops
+#     - 1080p 30 fps
+#     - MP4 H264
+#     - 32s - 51s
+#   specs_fr:
+#     - 10 video loops
+#     - 1080p 30 fps
+#     - MP4 H264
+#     - 32s - 51s
+#   gallery:
+#   - products/shaders-vj-loops-1/preview_1.png
+#   - products/shaders-vj-loops-1/preview_2.png
+#   - products/shaders-vj-loops-1/preview_3.png
+#   - products/shaders-vj-loops-1/preview_4.png
+#   links:
+#   - name: Download
+#     name_fr: Télécharger
+#     url: https://klemek.gumroad.com/l/shaders-1?layout=profile
+#   tags:
+#   - video
+#   - soft
+
 - id: about
   name: About beLow
   name_fr: À propos de beLow
