@@ -98,58 +98,57 @@
   - products/romejko/still-cells19.png
   - products/romejko/still-cells20.png
   description: |
-    The Romejko is a chaotic glyph-based image generator. <br>
-    Unlike video synthesizers, it doesn’t rely on oscillators, encoders, or mixers. <br><br>
-    Instead, its fundamentals building blocks are <strong>glyphs</strong>,
-    <strong style="
+    The Romejko is a standalone VGA image generator combining <strong>glyphs</strong>, <strong style="
       background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-    ">colors</strong>, and <strong>controlled c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹</strong>
+    ">colors</strong>, and <strong>controlled c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹</strong>.<br><br>
+    <strong>RomejkOS</strong> offers 256 characters across 12 charsets, 7 wordsets, a sentence generator, feedback, and 5 resolutions.
+    <h3>2027 Update: addition of an alternative firmware</h3>
+    <strong>Cells</strong> is a cellular video synthesis firmware inspired by Conway’s Game of Life, with three growth systems, geometric shapes, and color palettes.<br><br>
+    Hold TAP while powering on, then release it to switch between RomejkOS and Cells. This persists between reboots so that's like having a second Romejko, incredible.
   description_fr: |
-    Le Romejko est un générateur autonome d’images chaotiques basé sur les glyphes. <br>
-    Contrairement aux synthétiseurs vidéo, il n'est pas composé d'oscillateurs, d'encodeurs ou de mélangeurs. <br><br>
-    Fondamentalement, il utilise <strong>glyphes</strong>,
-    les <strong style="
+    Le Romejko est un générateur autonome d’images VGA qui combine <strong>glyphes</strong>, <strong style="
       background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-    ">couleurs</strong> et le <strong>c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹ contrôlé</strong> pour générer un flux vidéo VGA.
+    ">couleurs</strong> et <strong>c̷̛͉h̴̯̿̊ă̶̗͛ọ̷̯͊̈́ŝ̴̹ contrôlé</strong>.<br><br>
+    <strong>RomejkOS</strong> propose 256 caractères répartis en 12 jeux de caractères, 7 dictionnaires de mots, un générateur de phrases, du feedback et 5 résolutions.
+    <h3>Mise à jour 2027 : ajout d’un firmware alternatif</h3>
+    <strong>Cells</strong> propose une synthèse vidéo cellulaire inspirée du Jeu de la vie de Conway, avec trois systèmes de croissance, des formes géométriques et des palettes de couleurs.<br><br>
+    Maintenez TAP pendant le démarrage pour basculer entre RomejkOS et Cells. Le dernier choix est gardé en mémoire donc c'est comme avoir un nouveau Romejko, incroyable.
   specs:
     - Standalone VGA source
     - USB-C 5V power
-    - 256 characters
-    - 12 charsets
-    - 7 wordsets
-    - 2 feedback mode
-    - 5 resolutions
-    - 2 LFO
-    - Sentence generator (458.031 combinations)
-    - multifunction TAP button
+    - Multifunction TAP button
     - Analog RGB mixer
-    - See the manual for full feature set
+    - "2 firmwares included: RomejkOS (original), Cells"
+    - See images gallery below for screenshots
   specs_fr:
     - Source VGA autonome
     - Alimentation USB-C 5V
-    - 256 caractères
-    - 12 jeux de caractères
-    - 7 dictionnaires de mots
-    - 2 modes de feedback
-    - 5 résolutions
-    - 2 LFO
-    - Générateur de phrase (458.031 combinaisons)
     - Bouton TAP multifonction
     - Mixeur RGB analogique
-    - Voir le manuel pour la liste complète des fonctionnalités
+    - "2 firmware inclus: RomejkOS (original), Cells"
+    - Voir la gallerie ci dessous pour des screenshots
   links:
   - name: Buy
     name_fr: Acheter
     url: https://buy.stripe.com/3cI6oG4fZeREgbZdtC4Rq03
-  - name: Manual
-    name_fr: Manuel
-    url: https://sturdy-voyage-2ea.notion.site/Romejko-User-Manual-facadefcd2624f59b74485956ee67e70?pvs=4
+  - name: RomejkOS Manual (EN)
+    name_fr: Manuel RomejkOS (EN)
+    url: media/products/romejko/romejkos-v3.pdf
+  - name: RomejkOS Manual (FR)
+    name_fr: Manuel RomejkOS (FR)
+    url: media/products/romejko/romejkos-v3-fr.pdf
+  - name: Cells Manual (EN)
+    name_fr: Manuel Cells (EN)
+    url: media/products/romejko/cells.pdf
+  - name: Cells Manual (FR)
+    name_fr: Manuel Cells (FR)
+    url: media/products/romejko/cells-fr.pdf
   - name: Website
     name_fr: Site Web
     url: https://leshauts.xyz/
