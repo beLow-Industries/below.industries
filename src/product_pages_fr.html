@@ -1,7 +1,7 @@
 /o/ for product in _o_["load_yaml"]("products.yaml") \o\
 \o/ _o_["start_page"](product["id"] + "_fr") \o/
 <!DOCTYPE html>
-<html lang="en" translate="no">
+<html lang="fr" translate="no">
 
 <head>
     \o/ src["headers.html"] \o/
@@ -15,6 +15,7 @@
     <main>
         \o/ src["menu_fr.html"] \o/
         \o/ product_page(product, "fr") \o/
+        \o/ site_footer("fr") \o/
         \o/ src["scripts.html"] \o/
     </main>
 </body>

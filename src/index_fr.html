@@ -12,11 +12,14 @@
 <body>
     <main>
         \o/ src["menu_fr.html"] \o/
-        <section class="product-grid">
+        \o/ catalog_intro("fr") \o/
+        \o/ catalog_tools("fr") \o/
+        <section class="product-grid" aria-label="Catalogue">
             /o/ for product in _o_["load_yaml"]("products.yaml") \o\
             \o/ product_item(product, "fr") \o/
             /o/ endfor \o\
         </section>
+        \o/ site_footer("fr") \o/
         \o/ src["scripts.html"] \o/
     </main>
 </body>

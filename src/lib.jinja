@@ -4,26 +4,85 @@
 {% endmacro %}
 
 
+{% macro site_header(lang) %}
+/o/ set home = "index_fr.html" if lang == "fr" else "index.html" \o\
+<a class="skip-link" href="#content">\o/ "Aller au contenu" if lang == "fr" else "Skip to content" \o/</a>
+<header class="site-header">
+  <a class="brand" href="\o/ home \o/">beLow <span>Industries</span></a>
+  <span class="header-note">\o/ "Électronique indépendante / anomalies audiovisuelles" if lang == "fr" else "Independent electronics / audiovisual anomalies" \o/</span>
+  <div class="header-tools">
+    <input type="checkbox" id="darkmode" aria-label="\o/ 'Inverser les couleurs' if lang == 'fr' else 'Invert colors' \o/">
+    <label for="darkmode" id="darkmode_label" title="\o/ 'Inverser les couleurs' if lang == 'fr' else 'Invert colors' \o/">◐</label>
+    <a href="index.html" lang="en" data-language="en" \o/ 'aria-current="page"' if lang == 'en' else '' \o/>EN</a>
+    <span class="language-divider">/</span>
+    <a href="index_fr.html" lang="fr" data-language="fr" \o/ 'aria-current="page"' if lang == 'fr' else '' \o/>FR</a>
+    <details class="site-index">
+      <summary>Index <span class="index-symbol" aria-hidden="true">↗</span></summary>
+      <nav id="menu" aria-label="\o/ 'Navigation principale' if lang == 'fr' else 'Main navigation' \o/">
+        <span class="index-caption">[ \o/ 'Un peu de direction.' if lang == 'fr' else 'A little direction.' \o/ ]</span>
+        <a href="\o/ home \o/">\o/ "Tout voir" if lang == "fr" else "Everything" \o/ <span>00</span></a>
+        /o/ for category in _o_["load_yaml"]("categories.yaml") \o\
+        /o/ if category["id"] in _o_["uniq"](_o_["load_yaml"]("products.yaml"), "tags") \o\
+        \o/ category_item(category, lang) \o/
+        /o/ endif \o\
+        /o/ endfor \o\
+        <a href="about\o/ '_fr' if lang == 'fr' else '' \o/.html">\o/ "Le collectif" if lang == "fr" else "The collective" \o/ <span>↗</span></a>
+        <span class="index-caption">beLow / \o/ 'Suivez le bruit.' if lang == 'fr' else 'Follow the noise.' \o/</span>
+      </nav>
+    </details>
+  </div>
+</header>
+{% endmacro %}
+
+{% macro catalog_intro(lang) %}
+<section class="signal-intro" id="content" tabindex="-1">
+  <div class="edition-line"><span>beLow / Industries</span><span>\o/ "Fabriquer. Détourner. Recommencer." if lang == "fr" else "Build. Misuse. Repeat." \o/</span><span>↙ \o/ 'Vous êtes ici' if lang == 'fr' else 'You are here' \o/</span></div>
+  <div class="masthead">
+    <h1>beLow<span>industries</span></h1>
+    <div class="manifesto-note"><span class="note-cross" aria-hidden="true">✳</span><p>\o/ 'ÉLECTRONIQUE<br>INDÉPENDANTE.<br>ESPRITS<br>INDOCILES.' if lang == 'fr' else 'INDEPENDENT<br>ELECTRONICS.<br>UNRULY<br>MINDS.' \o/</p><span>\o/ 'Manipuler sans précaution.' if lang == 'fr' else 'Handle without care.' \o/</span></div>
+  </div>
+  <div class="hero-foot"><p class="hero-slogan">\o/ 'Détournement<br>encouragé.' if lang == 'fr' else 'Misuse<br>encouraged.' \o/</p><p class="hero-description">\o/ 'Des outils pour le son, l’image et tout ce qui déborde. Imaginés par des fabricants indépendants. À vous de faire du bruit.' if lang == 'fr' else 'Tools for sound, vision, and everything in between. Made by independent minds. Yours to make a mess with.' \o/</p><a class="catalog-jump" href="#catalog">\o/ 'Explorer<br>les machines' if lang == 'fr' else 'Explore<br>the machines' \o/ <span aria-hidden="true">↘</span></a></div>
+</section>
+<div class="signal-tape" aria-hidden="true"><span>AUDIO / VIDEO / SYNTHESIS / HAPPY ACCIDENTS</span><span>↗ NO SIGNAL IS INNOCENT ↙</span><span>AUDIO / VIDEO / SYNTHESIS</span></div>
+{% endmacro %}
+
+{% macro catalog_tools(lang) %}
+<div class="catalog-tools" id="catalog">
+  <div class="catalog-label"><span class="live-dot" aria-hidden="true"></span>\o/ 'Objets & autres perturbations' if lang == 'fr' else 'Objects & other disturbances' \o/ <span class="catalog-count">[ \o/ 'le catalogue' if lang == 'fr' else 'the catalog' \o/ ]</span></div>
+  <button type="button" class="order-toggle" aria-pressed="false" hidden><span aria-hidden="true">⊞</span> <span class="order-label">\o/ 'Un peu d’ordre ?' if lang == 'fr' else 'Make sense of this?' \o/</span></button>
+</div>
+<nav class="category-strip" aria-label="\o/ 'Catégories' if lang == 'fr' else 'Categories' \o/">
+  <a class="all-category" href="index\o/ '_fr' if lang == 'fr' else '' \o/.html">\o/ 'Tout' if lang == 'fr' else 'All' \o/ <span>↗</span></a>
+  /o/ for category in _o_["load_yaml"]("categories.yaml") \o\
+  /o/ if category["id"] in _o_["uniq"](_o_["load_yaml"]("products.yaml"), "tags") \o\
+  \o/ category_item(category, lang) \o/
+  /o/ endif \o\
+  /o/ endfor \o\
+</nav>
+{% endmacro %}
+
 {% macro product_item(product, lang) %}
 /o/ set lang_suffix = "_" + lang if lang != "en" else "" \o\
 <a href="\o/ product["id"] + lang_suffix \o/.html" class="product-item">
-    <img src="media/\o/ product["image"] \o/" alt="\o/ translate(product, "name", lang) \o/">
-    <div class="product-name">\o/ translate(product, "name", lang) \o/</div>
-    <div class="product-price">\o/ translate(product, "price", lang) \o/</div>
+    <div class="card-meta"><span class="object-number" aria-hidden="true"></span><span>\o/ ('Collectif' if lang == 'fr' else 'Collective') if product['id'] == 'about' else (' / '.join(product.get('tags', []))) \o/</span><span aria-hidden="true">↗</span></div>
+    <div class="card-image"><img src="media/\o/ product["image"] \o/" alt="\o/ translate(product, "name", lang) \o/" loading="lazy"></div>
+    <div class="card-caption"><h2 class="product-name">\o/ translate(product, "name", lang) \o/</h2><span class="product-price">\o/ translate(product, "price", lang) \o/</span></div>
+    <span class="card-cta">\o/ 'Voir de plus près' if lang == 'fr' else 'A closer look' \o/ <span aria-hidden="true">↗</span></span>
 </a>
 {% endmacro %}
 
 {% macro product_page(product, lang) %}
 /o/ set lang_suffix = "_" + lang if lang != "en" else "" \o\
-<section class="product-page">
+<section class="product-page" id="content" tabindex="-1">
   <div class="product-info">
-    <h2>\o/ translate(product, "name", lang) \o/</h2>
+    <p class="object-eyebrow">[ beLow / \o/ "Dossier machine" if lang == "fr" else "Machine file" \o/ ]</p>
+    <h1>\o/ translate(product, "name", lang) \o/</h1>
     <section class="product-description">
       \o/ translate(product, "description", lang) \o/
     </section>
     /o/ if product["specs"] or product["specs" + lang_suffix] \o\
     <section class="product-specs">
-      <h3>Specs</h3>
+      <h2>\o/ "Caractéristiques" if lang == "fr" else "Specifications" \o/</h2>
       <ul>
         /o/ for spec in (product["specs" + lang_suffix] if "specs" + lang_suffix in product else product["specs"]) \o\
           <li>—&nbsp;\o/ spec \o/</li>
@@ -42,9 +101,7 @@
           \o/ "Liens:" if lang == "fr" else "Links:" \o/
         </li>
         /o/ for link in product["links"] \o\
-        <a target="_blank" href="\o/ link['url'] \o/">
-          <li class="link-block">\o/ translate(link, "name", lang) \o/</li>
-        </a>
+        <li class="link-block"><a target="_blank" rel="noopener" href="\o/ link['url'] \o/">\o/ translate(link, "name", lang) \o/ <span aria-hidden="true">↗</span></a></li>
         /o/ endfor \o\
       </ul>
     </section>
@@ -54,21 +111,17 @@
   </section>
   <div class="product-gallery">
     /o/ for item in product["gallery"] \o\
-        <!--<div class="zoom-wrapper">
-          <img class="zoom-on-hover" src="media/\o/ item \o/"/>
-        </div>-->
-
-
         <div class="zoom-wrapper">
-          <div class="zoom-target" role="button" tabindex="0" aria-label="Zoom image">
-            <img src="media/\o/ item \o/" alt="" class="zoomable">
-          </div>
-          <div class="zoom-close" role="button" aria-label="Close"></div>
-          <div class="zoom-dismiss" aria-hidden="true"></div>
+          <button type="button" class="zoom-target" aria-label="\o/ 'Agrandir l’image' if lang == 'fr' else 'Enlarge image' \o/" aria-expanded="false">
+            <img src="media/\o/ item \o/" alt="\o/ translate(product, 'name', lang) \o/ — \o/ loop.index \o/" class="zoomable" loading="lazy">
+          </button>
         </div>
-
     /o/ endfor \o\
   </div>
+  <dialog class="image-dialog" aria-label="\o/ 'Image agrandie' if lang == 'fr' else 'Enlarged image' \o/">
+    <button type="button" class="zoom-close" autofocus>\o/ 'Fermer' if lang == 'fr' else 'Close' \o/ ×</button>
+    <img alt="">
+  </dialog>
 </section>
 {% endmacro %}
 
@@ -78,7 +131,7 @@
 {% endmacro %}
 
 {% macro category_page(category, lang) %}
-<section class="product-grid with-sub-title">
+<section class="product-grid with-sub-title" aria-label="\o/ 'Catalogue' if lang == 'fr' else 'Catalog' \o/">
 
 /o/ for product in _o_["load_yaml"]("products.yaml") \o\
 /o/ if category["id"] in product.get("tags", []) \o\
@@ -88,4 +141,13 @@
 /o/ endif \o\
 /o/ endfor \o\
 </section>
+{% endmacro %}
+
+{% macro site_footer(lang) %}
+<footer class="site-footer">
+  <p class="footer-statement">\o/ 'Moins de règles.<br><em>Plus de signal.</em>' if lang == 'fr' else 'Less instruction.<br><em>More interference.</em>' \o/</p>
+  <p class="footer-note">\o/ 'Un projet du collectif beLow. Les ventes, téléchargements et expéditions sont gérés directement par les créateurs.' if lang == 'fr' else 'A project by the beLow collective. Sales, downloads, and shipping are handled directly by the makers.' \o/</p>
+  <a href="about\o/ '_fr' if lang == 'fr' else '' \o/.html">\o/ 'Le collectif' if lang == 'fr' else 'Meet the collective' \o/ ↗</a>
+</footer>
+<div class="footer-tail"><span>beLow Industries / \o/ 'Indépendant par nature' if lang == 'fr' else 'Independent by nature' \o/</span><a href="#content">\o/ 'Retour au signal' if lang == 'fr' else 'Back to the signal' \o/ ↑</a></div>
 {% endmacro %}

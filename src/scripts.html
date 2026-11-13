@@ -1,119 +1,86 @@
 <script>
-  function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.classList.toggle("open");
+(() => {
+  const french = document.documentElement.lang === 'fr';
+  const readSetting = key => {
+    try { return localStorage.getItem(key); } catch { return null; }
+  };
+  const saveSetting = (key, value) => {
+    try { localStorage.setItem(key, value); } catch { /* Storage is optional. */ }
+  };
+
+  const theme = document.getElementById('darkmode');
+  if (theme) {
+    theme.checked = readSetting('darkmode') === 'true';
+    theme.addEventListener('change', () => saveSetting('darkmode', theme.checked));
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const checkbox = document.querySelector("#darkmode");
-    const label = document.querySelector("#darkmode_label");
-
-    // Restore state
-    const saved = localStorage.getItem("darkmode");
-    if (saved !== null) {
-      checkbox.checked = saved === "true";
-    }
-
-    label.innerHTML = (checkbox.checked ? "🌕" : "🌑");
-
-    // Save on change
-    checkbox.addEventListener("change", function () {
-      localStorage.setItem("darkmode", checkbox.checked);
-      label.innerHTML = (checkbox.checked ? "🌕" : "🌑");
-    });
-  });
-</script>
-
-
-<script>
-(() => {
-  const isTouch = matchMedia('(hover: none), (pointer: coarse)').matches;
-
-  // Scroll lock (no jump-to-top)
-  let lock = { on:false, y:0 };
-  const lockScroll = () => {
-    if (lock.on) return;
-    lock.y = window.scrollY || document.documentElement.scrollTop || 0;
-    Object.assign(document.body.style, {
-      position:'fixed', top:`-${lock.y}px`, left:'0', right:'0', width:'100%', overflow:'hidden'
-    });
-    lock.on = true;
-  };
-  const unlockScroll = () => {
-    if (!lock.on) return;
-    Object.assign(document.body.style, {
-      position:'', top:'', left:'', right:'', width:'', overflow:''
-    });
-    window.scrollTo(0, lock.y);
-    lock.on = false;
-  };
-
-  const TAP_MAX_MOVE = 10, TAP_MAX_TIME = 500;
-
-  const bind = (wrap) => {
-    const target  = wrap.querySelector('.zoom-target');
-    const close   = wrap.querySelector('.zoom-close');
-    const dismiss = wrap.querySelector('.zoom-dismiss');
-    if (!target || !close || !dismiss) return;
-
-    const open = () => { 
-      if (wrap.classList.contains('is-open')) return;
-      wrap.classList.add('is-open'); 
-      lockScroll(); 
+  const order = document.querySelector('.order-toggle');
+  if (order) {
+    const setOrder = ordered => {
+      document.body.classList.toggle('ordered', ordered);
+      order.setAttribute('aria-pressed', String(ordered));
+      order.querySelector('.order-label').textContent = ordered
+        ? (french ? 'Remettre le désordre' : 'Bring back the mess')
+        : (french ? 'Un peu d’ordre ?' : 'Make sense of this?');
     };
-    const closeAll = () => { 
-      if (!wrap.classList.contains('is-open')) return;
-      wrap.classList.remove('is-open'); 
-      unlockScroll(); 
-    };
-    const toggle = () => { wrap.classList.contains('is-open') ? closeAll() : open(); };
+    setOrder(readSetting('catalog-order') === 'true');
+    order.hidden = false;
+    order.addEventListener('click', () => {
+      const ordered = !document.body.classList.contains('ordered');
+      setOrder(ordered);
+      saveSetting('catalog-order', ordered);
+    });
+  }
 
-    // Always toggle on click (desktop + mobile browsers fire click after tap)
-    target.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
-
-    // Touch-only: tap heuristic so vertical scroll isn't treated as a tap
-    if (isTouch) {
-      let id=null, sx=0, sy=0, st=0, moved=false;
-      target.addEventListener('touchstart', (e) => {
-        if (e.touches.length !== 1) { id=null; return; }
-        const t = e.touches[0];
-        id = t.identifier; sx = t.clientX; sy = t.clientY; st = performance.now(); moved = false;
-      }, {passive:true});
-
-      target.addEventListener('touchmove', (e) => {
-        if (id==null) return;
-        const t = [...e.touches].find(tt => tt.identifier===id); if (!t) return;
-        if (Math.hypot(t.clientX - sx, t.clientY - sy) > TAP_MAX_MOVE) moved = true;
-      }, {passive:true});
-
-      target.addEventListener('touchend', (e) => {
-        const t = e.changedTouches[0]; if (id!=null && t.identifier!==id) return;
-        const tap = !moved && (performance.now()-st) <= TAP_MAX_TIME && e.touches.length===0;
-        if (tap) { e.preventDefault(); e.stopPropagation(); toggle(); }
-        id=null;
-      }, {passive:false});
-    }
-
-    // Close handlers (apply to ALL devices)
-    const closeHandler = (e) => { e.preventDefault(); e.stopPropagation(); closeAll(); };
-    close.addEventListener('click', closeHandler, {passive:false});
-    dismiss.addEventListener('click', closeHandler, {passive:false});
-    // Also support touchend for good measure (no-op on desktop)
-    close.addEventListener('touchend', closeHandler, {passive:false});
-    dismiss.addEventListener('touchend', closeHandler, {passive:false});
-  };
-
-  // Bind all wrappers
-  document.querySelectorAll('.zoom-wrapper').forEach(bind);
-
-  // One global ESC handler closes whichever zoom is open
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    const openWrap = document.querySelector('.zoom-wrapper.is-open');
-    if (!openWrap) return;
-    // mimic closeAll() for that wrapper
-    openWrap.classList.remove('is-open');
-    unlockScroll();
+  const page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('[data-language]').forEach(link => {
+    const base = page.replace(/(_fr)?\.html$/, '');
+    link.href = base + (link.dataset.language === 'fr' ? '_fr' : '') + '.html';
   });
+  document.querySelectorAll('#menu a, .category-strip a').forEach(link => {
+    if (link.getAttribute('href') === page) link.setAttribute('aria-current', 'page');
+  });
+
+  const index = document.querySelector('.site-index');
+  if (index) {
+    document.addEventListener('click', event => {
+      if (!index.contains(event.target)) index.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && index.open) {
+        index.open = false;
+        index.querySelector('summary').focus();
+      }
+    });
+  }
+
+  const dialog = document.querySelector('.image-dialog');
+  if (dialog) {
+    let activeTarget;
+    const image = dialog.querySelector('img');
+    document.querySelectorAll('.zoom-target').forEach(target => {
+      target.addEventListener('click', () => {
+        const source = target.querySelector('img');
+        image.src = source.src;
+        image.alt = source.alt;
+        activeTarget = target;
+        target.setAttribute('aria-expanded', 'true');
+        dialog.showModal();
+        document.documentElement.style.overflow = 'hidden';
+      });
+    });
+    dialog.querySelector('.zoom-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) {
+        const rect = dialog.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+      }
+    });
+    dialog.addEventListener('close', () => {
+      document.documentElement.style.overflow = '';
+      activeTarget.setAttribute('aria-expanded', 'false');
+      activeTarget.focus({ preventScroll: true });
+    });
+  }
 })();
 </script>
