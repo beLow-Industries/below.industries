@@ -334,7 +334,6 @@ main{
   gap: 16px;
   padding: clamp(18px, 2.4vw, 24px);
   border-radius: 0;
-  border: 1.5px solid var(--line);
   background: var(--panel);
   box-shadow: var(--shadow-1);
   position: relative;
