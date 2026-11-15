@@ -274,7 +274,6 @@ main{
   padding: 12px;
   border-radius: 0;
   background: var(--panel);
-  border: 1.5px solid var(--line);
   transition: none;
   overflow: hidden;
   box-shadow: var(--shadow-1);
